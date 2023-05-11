@@ -15,12 +15,7 @@ steps:
     versionSpec: '18.x'
   displayName: 'Install Node.js'
 
-#- task: NodeTool@1
-#  inputs:
-#     command: 'install'
-
 - script: |
-    pwd
     cd ./usefulApps/frontend
     npm install
     npm run build
