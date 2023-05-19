@@ -24,6 +24,16 @@ steps:
   - task: GoTool@0
     inputs:
       version: 1.20.4
+
+  - script: |
+      pwd
+
+  - task: Go@0
+    inputs:
+      command: 'get'
+      arguments: '-d'
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
+
   - task: Go@0
     inputs:
       command: "build"
