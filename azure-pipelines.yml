@@ -4,19 +4,27 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '18.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "18.x"
+    displayName: "Install Node.js"
 
-- script: |
-    cd ./usefulApps/frontend
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      cd ./usefulApps/frontend
+      npm install
+      npm run build
+    displayName: "npm install and build"
+
+  - task: GoTool@0
+    inputs:
+      version: 1.20.4
+  - task: Go@0
+    inputs:
+      command: "build"
+      workingDirectory: "$(System.DefaultWorkingDirectory)"
