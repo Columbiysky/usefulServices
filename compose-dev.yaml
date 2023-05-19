@@ -4,12 +4,16 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: qwer
+    expose:
+      - 5432
   
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    expose:
+      - 8080
 
   app:
     entrypoint:
