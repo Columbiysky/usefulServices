@@ -30,8 +30,10 @@ steps:
       command: 'get'
       arguments: '-d'
       workingDirectory: './usefulApps/backend/src'
+    displayName: "Go get dependencies"
 
   - task: Go@0
     inputs:
       command: "build"
       workingDirectory: "./usefulApps/backend/src"
+    displayName: "Go build backend"
