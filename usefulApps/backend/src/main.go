@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"main/controllers"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("Init backend")
+	router := gin.Default()
+	router.GET("/hello/", controllers.Hello)
+	router.POST("/hello/", controllers.HelloObject)
+	router.Run()
 }
