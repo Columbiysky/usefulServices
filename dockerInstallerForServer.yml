@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      #POSTGRES_PASSWORD: unknown
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+
+    # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+    volumes:
+      - /root/dockerfiles/appsConfigs/nginx/hosts:/etc/nginx/conf.d
+      - /root/dockerfiles/appsConfigs/nginx/www:/var/www
+      - /root/dockerfiles/appsConfigs/nginx/logs:/var/logs
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+      - 8001:8001
+    volumes:
+      - /root/dockerfiles/appsConfigs/redis/data:/data
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: always
+    user: '0'
+    volumes:
+      - /root/dockerfiles/appsConfigs/grafana/data:/var/lib/grafana
+    ports:
+      - 3000:3000
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    volumes:
+      - /root/dockerfiles/appsConfigs/jenkins/config:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:8080
+      - 50000:50000
+
+  portainer:
+    #web gui для управления контейнерами
+    image: portainer/portainer-ce:latest
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /root/dockerfiles/appsConfigs/portainer/data:/data
+    ports:
+      - 9000:9000
