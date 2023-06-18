@@ -5,9 +5,8 @@ export default defineNuxtConfig({
         'primeicons/primeicons.css',
         'primeflex/primeflex.css'
     ],
-    modules: ['@nuxt/http', '@nuxt/types'],
     build: {
         transpile: ['primevue']
     },
-    ssr: false
+    ssr: false,
 })
