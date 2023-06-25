@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/router": "^1.7.0",
     "@types/lodash": "^4.14.195",
     "@types/node": "^18",
     "nuxt": "^3.4.3"

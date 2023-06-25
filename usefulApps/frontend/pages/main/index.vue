@@ -1,6 +1,7 @@
 <template>
     <Button label="Test console.log('asdf')" @click="buttonClick()">
     </Button>
+    <Button label="Youtube downloader"></Button>
 </template>
 <script lang="ts">
 import CustomObject from '~/data/exampleObject/customObject';
