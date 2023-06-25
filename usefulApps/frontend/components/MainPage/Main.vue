@@ -3,20 +3,43 @@
     </Button>
 </template>
 <script lang="ts">
-import { UseFetchOptions } from 'nuxt/app';
+import CustomObject from '~/data/exampleObject/customObject';
+import HttpWrapper from '~/logic/webhooks/httpWrappers/httpWrapper';
 export default {
     methods: {
         buttonClick() {
-            // const wrapper = new HttpWrapper();  потом напишу рабочий враппер, этот пока откисает
-            // useFetch('http://localhost:8080/hello/') пример простого get без всего
-            useFetch('http://localhost:8080/hello/', <UseFetchOptions<any>>{
-                method: 'POST',
-                body:
-                {
+            const wrapper = new HttpWrapper();
+
+            // GET
+            // wrapper.HttpGet('http://localhost:8080/hello/').then(
+            //     (result) => {
+            //         console.log(result); //итоговое значение, которое хотим получить лежит в result.data.value
+            //     },
+            //     (error) => {
+            //         console.log("Error: ", error);
+            //     }
+            // );
+
+            // POST
+            wrapper.HttpPost('http://localhost:8080/hello/', {
+                body: <CustomObject>{
                     "id": 1,
                     "name": "FROM CLIENT"
+                },
+            }).then(
+                (result) => {
+                    const value = result.data.value;
+
+                    // здесь вместо CustomObject можно воткуть что угодно,
+                    // из value нужно будет правильно вписать названия свойств, чтобы он их нашел и вставил
+                    const res = new CustomObject(value.id, value.name);
+
+                    console.log(res);
+                },
+                (error) => {
+                    console.log("Error: ", error);
                 }
-            })
+            );
         }
     }
 }

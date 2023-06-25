@@ -1,5 +1,5 @@
-import _ from "lodash"
-import { UseFetchOptions } from "nuxt/app"
+import _ from "lodash";
+import { UseFetchOptions } from "nuxt/app";
 
 export default class HttpWrapper {
     HttpGet(url: string, options?: UseFetchOptions<any>) {
@@ -7,31 +7,23 @@ export default class HttpWrapper {
             options = <UseFetchOptions<any>>{
                 method: "GET",
 
-            }
+            };
         } else {
-            options.method = "GET"
+            options.method = "GET";
         }
 
-        const result = async (params: any) => {
-            await useFetch(url, options)
-        }
-
-        return result
+        return useFetch(url, options);
     }
 
     HttpPost(url: string, options?: UseFetchOptions<any>) {
         if (_.isNil(options)) {
             options = <UseFetchOptions<any>>{
-                method: "POST"
-            }
+                method: "POST",
+            };
         } else {
-            options.method = "POST"
+            options.method = "POST";
         }
 
-        const result = async (params: any) => {
-            await useFetch(url, options)
-        }
-
-        return result
+        return useFetch(url, options);
     }
 }
