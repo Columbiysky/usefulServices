@@ -17,6 +17,7 @@
     "lodash": "^4.17.21",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
-    "primevue": "^3.29.0"
+    "primevue": "^3.29.0",
+    "vue-router": "^4.2.2"
   }
 }
