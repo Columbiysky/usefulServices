@@ -3,7 +3,7 @@ apt update -y
 apt upgrade -y
 
 echo "install nodeJs 19 and dependencies for client app"
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_19.x | -E bash - && sudo apt-get install -y nodejs
 cd ./usefulApps/frontend
 npm i
 cd ../..
