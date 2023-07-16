@@ -9,7 +9,6 @@ import (
 
 func Hello(context *gin.Context) {
 	context.JSON(http.StatusOK, "hello")
-	// test pull request
 }
 
 func HelloObject(context *gin.Context, obj params.HelloObject) {
