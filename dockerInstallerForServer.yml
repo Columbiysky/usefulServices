@@ -1,7 +1,6 @@
-version: '3.8'
+version: "3.8"
 
 services:
-
   postgres:
     image: postgres:latest
     container_name: postgres
@@ -39,23 +38,41 @@ services:
     image: grafana/grafana-oss:latest
     container_name: grafana
     restart: always
-    user: '0'
+    user: "0"
     volumes:
       - /root/dockerfiles/appsConfigs/grafana/data:/var/lib/grafana
     ports:
       - 3000:3000
 
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    privileged: true
-    user: root
-    volumes:
-      - /root/dockerfiles/appsConfigs/jenkins/config:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+  gitlab:
+    image: "gitlab/gitlab-ce:latest"
+    container_name: gitlab
+    restart: always
+    hostname: "gitlab.cbsky.ru"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.cbsky.ru:8929'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-      - 8080:8080
-      - 50000:50000
+      - "8929:8929"
+      - "2224:22"
+      - "4443:443"
+    volumes:
+      - "/root/dockerfiles/appsConfigs/gitlab/config:/etc/gitlab"
+      - "/root/dockerfiles/appsConfigs/gitlab/logs:/var/log/gitlab"
+      - "/root/dockerfiles/appsConfigs/gitlab/data:/var/opt/gitlab"
+    shm_size: "256m"
+
+  gitlab-runner:
+    container_name: gitlab-runner
+    image: gitlab/gitlab-runner:latest
+    restart: always
+    volumes:
+      - "/root/dockerfiles/appsConfigs/gitlabRunner/data:/home/gitlab_ci_multi_runner/data"
+      - "/root/dockerfiles/appsConfigs/gitlabRunner/config:/etc/gitlab-runner"
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+    environment:
+      - CI_SERVER_URL=https://cbsky.ru/ci
 
   rabbitmq:
     image: rabbitmq:management
@@ -64,7 +81,7 @@ services:
       - 5672:5672
       - 15672:15672
     volumes:
-      - /root/dockerfiles/appsConfigs/rabbitmq/data:/var/lib/rabbitmq/
+      - /root/dockerfiles/appsConfigs/rabbitmq/data:/var/lib/rabbitmq
       - /root/dockerfiles/appsConfigs/rabbitmq/logs:/var/log/rabbitmq
 
   portainer:
