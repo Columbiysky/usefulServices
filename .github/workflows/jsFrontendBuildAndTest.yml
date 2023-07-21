@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: '19.x'
       - name: Install dependencies
+        working-directory: usefulApps/frontend
         run: npm ci
       - name: Build
         working-directory: usefulApps/frontend
