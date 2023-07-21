@@ -26,4 +26,6 @@ jobs:
       - name: Build
         working-directory: usefulApps/frontend
         run: npm run build
-
+      - name: Test
+        working-directory: usefulApps/frontend
+        run: npm run test
