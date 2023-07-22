@@ -12,8 +12,8 @@ echo "install python"
 apt install python3 -y
 
 ehco "install golang"
-curl -O https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz
-tar -C /usr/local -xvf go1.20.5.linux-amd64.tar.gz
+curl -O https://dl.google.com/go/go1.20.6.linux-amd64.tar.gz
+tar -C /usr/local -xvf go1.20.6.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 go version
-rm go1.20.5.linux-amd64.tar.gz
+rm go1.20.6.linux-amd64.tar.gz
