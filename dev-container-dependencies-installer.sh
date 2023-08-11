@@ -17,7 +17,7 @@ wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz
 tar -xvf Python-3.11.4.tar.xz
 cd Python-3.11.4/
 ./configure --enable-optimizations
-make
+make -j 4
 make altinstall
 python3.11 --version
 cd ..
