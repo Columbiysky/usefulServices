@@ -11,26 +11,9 @@ cd ../..
 node --version
 echo "******************************"
 
-echo "install python"
-apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config -y
-wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz
-tar -xvf Python-3.11.4.tar.xz
-cd Python-3.11.4/
-./configure --enable-optimizations
-make -j 4
-make altinstall
-python3.11 --version
-cd ..
-echo "******************************"
-echo "install pip"
-curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 
-pip3.11 -V
-cd ./usefulApps/executors/python
-pip3.11 install -r requirements.txt
-echo "******************************"
-
-rm Python-3.11.4.tar.xz
-rm -rf Python-3.11.4
+echo "install python, pip and dependencies"
+apt install -y python3-pip
+pip3 install -r ./usefulApps/executors/python/requirements.txt
 echo "******************************"
 
 ehco "install golang"
