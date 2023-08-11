@@ -3,11 +3,12 @@ apt update -y
 apt upgrade -y
 echo "******************************"
 
-echo "install nodeJs 19 and dependencies for client app"
-curl -fsSL https://deb.nodesource.com/setup_19.x | -E bash - && sudo apt-get install -y nodejs
+echo "install nodeJs 20 and dependencies for client app"
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs
 cd ./usefulApps/frontend
 npm i
 cd ../..
+node --version
 echo "******************************"
 
 echo "install python"
