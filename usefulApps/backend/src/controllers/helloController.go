@@ -18,3 +18,7 @@ func HelloObject(context *gin.Context) {
 
 	logic.HelloObject(context, obj)
 }
+
+func HelloFromExecutor(context *gin.Context) {
+	logic.HelloFromExecutor(context)
+}
