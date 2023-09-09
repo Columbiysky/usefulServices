@@ -16,8 +16,8 @@ func HelloObject(context *gin.Context, obj params.HelloObject) {
 	context.JSON(http.StatusOK, obj)
 }
 
-func HelloFromExecutor(context *gin.Context) {
-	resp, err := http.Get("http://localhost:8000")
+func HelloFromPyServ(context *gin.Context) {
+	resp, err := http.Get("http://localhost:8000/")
 
 	if err != nil {
 		print(err)
