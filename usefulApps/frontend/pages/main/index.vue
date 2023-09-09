@@ -4,7 +4,6 @@
     <Button label="Youtube downloader"></Button>
 </template>
 <script lang="ts">
-import CustomObject from '~/data/exampleObject/customObject';
 import HttpWrapper from '~/logic/webhooks/httpWrappers/httpWrapper';
 export default {
     methods: {
@@ -12,35 +11,35 @@ export default {
             const wrapper = new HttpWrapper();
 
             // GET
-            // wrapper.HttpGet('http://localhost:8080/hello/').then(
-            //     (result) => {
-            //         console.log(result); //итоговое значение, которое хотим получить лежит в result.data.value
-            //     },
-            //     (error) => {
-            //         console.log("Error: ", error);
-            //     }
-            // );
-
-            // POST
-            wrapper.HttpPost('http://localhost:8080/hello/', {
-                body: <CustomObject>{
-                    "id": 1,
-                    "name": "FROM CLIENT"
-                },
-            }).then(
+            wrapper.HttpGet('http://localhost:8080/helloFromPyServ/').then(
                 (result) => {
-                    const value = result.data.value;
-
-                    // здесь вместо CustomObject можно воткуть что угодно,
-                    // из value нужно будет правильно вписать названия свойств, чтобы он их нашел и вставил
-                    const res = new CustomObject(value.id, value.name);
-
-                    console.log(res);
+                    console.log(result); //итоговое значение, которое хотим получить лежит в result.data.value
                 },
                 (error) => {
                     console.log("Error: ", error);
                 }
             );
+
+            // POST
+            // wrapper.HttpPost('http://localhost:8080/hello/', {
+            //     body: <CustomObject>{
+            //         "id": 1,
+            //         "name": "FROM CLIENT"
+            //     },
+            // }).then(
+            //     (result) => {
+            //         const value = result.data.value;
+
+            //         // здесь вместо CustomObject можно воткуть что угодно,
+            //         // из value нужно будет правильно вписать названия свойств, чтобы он их нашел и вставил
+            //         const res = new CustomObject(value.id, value.name);
+
+            //         console.log(res);
+            //     },
+            //     (error) => {
+            //         console.log("Error: ", error);
+            //     }
+            // );
         }
     }
 }
