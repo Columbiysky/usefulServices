@@ -5,6 +5,13 @@ go 1.20
 require github.com/gin-gonic/gin v1.9.1
 
 require (
+	github.com/samber/do v1.6.0 // indirect
+	github.com/samber/lo v1.38.1 // indirect
+	github.com/samber/mo v1.8.0 // indirect
+	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
+)
+
+require (
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
