@@ -15,6 +15,7 @@
     "nuxt": "^3.7.4"
   },
   "dependencies": {
+    "defu": "^6.1.2",
     "lodash": "^4.17.21",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
