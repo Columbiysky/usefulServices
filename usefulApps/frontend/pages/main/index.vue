@@ -2,8 +2,10 @@
     <Button label="Test console.log('asdf')" @click="buttonClick()">
     </Button>
     <Button label="Youtube downloader"></Button>
+    <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="video/*" />
 </template>
 <script lang="ts">
+import { useToast } from "primevue/usetoast";
 import HttpWrapper from '~/logic/webhooks/httpWrappers/httpWrapper';
 export default {
     methods: {
@@ -40,6 +42,10 @@ export default {
             //         console.log("Error: ", error);
             //     }
             // );
+        },
+        onUpload() {
+            const toast = useToast();
+            toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
         }
     }
 }
