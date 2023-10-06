@@ -22,3 +22,7 @@ func HelloObject(context *gin.Context) {
 func HelloFromPyServ(context *gin.Context) {
 	logic.HelloFromPyServ(context)
 }
+
+func HelloFile(context *gin.Context) {
+	logic.HelloFile(context)
+}

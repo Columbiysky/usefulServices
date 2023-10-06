@@ -17,5 +17,7 @@ func main() {
 
 	router.GET("/helloFromPyServ/", controllers.HelloFromPyServ)
 
+	router.POST("/upload", controllers.HelloFile)
+
 	router.Run()
 }

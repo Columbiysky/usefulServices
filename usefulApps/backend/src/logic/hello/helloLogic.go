@@ -1,7 +1,9 @@
 package logic
 
 import (
+	"fmt"
 	"io"
+	"log"
 	"main/logic/hello/params"
 	"net/http"
 
@@ -31,4 +33,14 @@ func HelloFromPyServ(context *gin.Context) {
 
 	resp.Body.Close()
 	context.JSON(http.StatusOK, string(body))
+}
+
+func HelloFile(context *gin.Context) {
+	file, _ := context.FormFile("file")
+	log.Println(file.Filename)
+
+	// Upload the file to specific dst.
+	// context.SaveUploadedFile(file, dst)
+
+	context.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!", file.Filename))
 }
