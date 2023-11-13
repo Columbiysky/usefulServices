@@ -12,5 +12,6 @@ dist
 __pycache__
 .vscode
 .tar.gz
-/usefulApps/backend/src/__debug_bin2277795294.exe
-/usefulApps/backend/src/tmp/main.exe
+/usefulApps/backend/src/*.exe
+/usefulApps/backend/src/tmp/*.exe
+usefulApps/backend/src/usefulServices.code-workspace
