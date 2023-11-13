@@ -1,15 +1,10 @@
 module main
 
-go 1.20
+go 1.21
 
 require github.com/gin-gonic/gin v1.9.1
 
-require (
-	github.com/samber/do v1.6.0 // indirect
-	github.com/samber/lo v1.38.1 // indirect
-	github.com/samber/mo v1.8.0 // indirect
-	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
-)
+require golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
