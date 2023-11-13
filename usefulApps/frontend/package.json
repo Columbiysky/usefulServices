@@ -12,7 +12,7 @@
     "@nuxtjs/router": "^1.7.0",
     "@types/lodash": "^4.14.195",
     "@types/node": "^18",
-    "nuxt": "^3.7.4"
+    "nuxt": "^3.8.1"
   },
   "dependencies": {
     "defu": "^6.1.2",
