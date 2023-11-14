@@ -1,7 +1,7 @@
 <template>
     <p>main page</p>
     <li>
-        <NuxtLink to="/main">qwer</NuxtLink>
+        <NuxtLink to="/login">go to login</NuxtLink>
     </li>
 </template>
 <script lang="ts">
