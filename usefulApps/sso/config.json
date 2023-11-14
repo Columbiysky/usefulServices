@@ -1,0 +1,9 @@
+{
+    "db": {
+        "url": "cbsky.ru",
+        "port": 5432,
+        "db": "sso",
+        "username": "postgres",
+        "password": "0o9i*U&Y"
+    }
+}
