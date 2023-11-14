@@ -14,4 +14,4 @@ __pycache__
 .tar.gz
 /usefulApps/backend/src/*.exe
 /usefulApps/backend/src/tmp/*.exe
-usefulApps/backend/src/usefulServices.code-workspace
+usefulServices.code-workspace
