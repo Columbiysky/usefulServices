@@ -2,5 +2,6 @@ go 1.21.4
 
 use (
 	./usefulApps/backend/src
+	./usefulApps/dbTool
 	./usefulApps/sso
 )
