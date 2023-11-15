@@ -45,4 +45,5 @@ func checkDbExists(dbConnection *gorm.DB, dbName string) bool {
 func createDb(dbConnection *gorm.DB, dbName string) {
 	createDatabaseCommand := fmt.Sprintf("create database %s", dbName)
 	dbConnection.Exec(createDatabaseCommand)
+	log.Printf("database %s has been created", dbName)
 }

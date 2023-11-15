@@ -10,22 +10,22 @@ import (
 
 type Account struct {
 	gorm.Model
-	id       int64  `gorm:"not null" json:"account_id"`
-	login    string `gorm:"not null" json:"account_login"`
-	password string `gorm:"not null" json:"account_password"`
+	Id       int64  `gorm:"not null" json:"account_id"`
+	Login    string `gorm:"not null" json:"account_login"`
+	Password string `gorm:"not null" json:"account_password"`
 }
 
 type Token struct {
 	gorm.Model
-	id         int64  `gorm:"not null" json:"token_id"`
-	tokenValue string `gorm:"not null" json:"token_value"`
+	Id         int64  `gorm:"not null" json:"token_id"`
+	TokenValue string `gorm:"not null" json:"token_value"`
 }
 
 type AccountToken struct {
 	gorm.Model
-	id      int64   `gorm:"not null" json:"account_token_id"`
-	account Account `gorm:"not null" json:"account_token_account"`
-	token   Token   `gorm:"not null" json:"account_token_token"`
+	Id      int64   `gorm:"not null" json:"account_token_id"`
+	Account Account `gorm:"not null" json:"account_token_account"`
+	Token   Token   `gorm:"not null" json:"account_token_token"`
 }
 
 func Migrate() {
