@@ -10,6 +10,28 @@ import (
 	"github.com/spf13/viper"
 )
 
+func CreateDatabases() {
+	readConfig()
+	createDatabaseSSO_ACCOUNTS()
+}
+
+func createDatabaseSSO_ACCOUNTS() {
+	dbName := "sso_accounts"
+	db, err := gorm.Open(postgres.Open(buildConnectionString()), &gorm.Config{})
+
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+
+	if !checkDbExists(db, dbName) {
+		createDb(db, dbName)
+		return
+	}
+
+	log.Printf("Database %s exists\n", dbName)
+}
+
 func readConfig() {
 	viper.AddConfigPath(".")
 	viper.SetConfigName("config") // Register config file name (no extension)
@@ -22,12 +44,7 @@ func readConfig() {
 	}
 }
 
-func CreateDatabases() {
-	createDatabaseSSO_ACCOUNTS()
-}
-
-func createDatabaseSSO_ACCOUNTS() {
-	readConfig()
+func buildConnectionString() string {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s port=%s sslmode=%s TimeZone=%s",
 		viper.Get("db.host"),
 		viper.Get("db.user"),
@@ -36,22 +53,21 @@ func createDatabaseSSO_ACCOUNTS() {
 		viper.Get("db.sslmode"),
 		viper.Get("db.TimeZone"),
 	)
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	return dsn
+}
 
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
-
+func checkDbExists(dbConnection *gorm.DB, dbName string) bool {
 	var checkResult int8
-	checkDbExists := "SELECT count(datname) FROM pg_catalog.pg_database where datname ='sso_accounts'"
-	db.Raw(checkDbExists).Scan(&checkResult)
+	checkDbExists := fmt.Sprintf(
+		"SELECT count(datname) FROM pg_catalog.pg_database where datname ='%s'",
+		dbName,
+	)
+	dbConnection.Raw(checkDbExists).Scan(&checkResult)
 
-	if checkResult == 0 {
-		createDatabaseCommand := "create database sso_accounts"
-		db.Exec(createDatabaseCommand)
-		return
-	}
+	return checkResult > 0
+}
 
-	log.Println("Database sso_accounts exists")
+func createDb(dbConnection *gorm.DB, dbName string) {
+	createDatabaseCommand := fmt.Sprintf("create database %s", dbName)
+	dbConnection.Exec(createDatabaseCommand)
 }
