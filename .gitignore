@@ -9,6 +9,7 @@ dist
 .DS_Store
 *.mp4*
 *.gif*
+*.exe
 __pycache__
 .vscode
 .tar.gz
