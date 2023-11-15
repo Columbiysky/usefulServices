@@ -22,7 +22,6 @@ func RegisterAccount(account models.Account) int64 {
 	}
 
 	dbEntity := models.Account{
-		Id:       1,
 		Login:    "testLogin",
 		Password: "testPassword",
 	}
