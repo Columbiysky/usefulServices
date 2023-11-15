@@ -6,6 +6,8 @@
         "port": "5432",
         "sslmode": "disable",
         "timezone": "Europe/London",
-        "db": "sso"
+        "dbNames": {
+            "sso_accounts": "sso_accounts"
+        }
     }
 }
