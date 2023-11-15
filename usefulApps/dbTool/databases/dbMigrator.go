@@ -23,9 +23,11 @@ type Token struct {
 
 type AccountToken struct {
 	gorm.Model
-	Id      int64   `gorm:"not null" json:"account_token_id"`
-	Account Account `gorm:"not null" json:"account_token_account"`
-	Token   Token   `gorm:"not null" json:"account_token_token"`
+	Id           int64 `gorm:"not null" json:"account_token_id"`
+	AccountRefer int64
+	TokenRefer   int64
+	Account      Account `gorm:"foreignKey:AccountRefer"`
+	Token        Token   `gorm:"foreignKey:TokenRefer"`
 }
 
 func Migrate() {
