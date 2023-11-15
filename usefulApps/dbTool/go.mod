@@ -1,4 +1,4 @@
-module usefulApps.com/dbTool
+module dbTool
 
 go 1.21.4
 
