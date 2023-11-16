@@ -6,5 +6,5 @@ import (
 
 func main() {
 	databases.CreateDatabases()
-	databases.Migrate()
+	// databases.Migrate()
 }

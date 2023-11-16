@@ -1,51 +1,45 @@
 package databases
 
-import (
-	"dbTool/databases/db_internal"
-	"log"
+// type Account struct {
+// 	gorm.Model
+// 	Id       int64  `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"account_id"`
+// 	Login    string `gorm:"not null" json:"account_login"`
+// 	Password string `gorm:"not null" json:"account_password"`
+// }
 
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-)
+// type Token struct {
+// 	gorm.Model
+// 	Id         int64  `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"token_id"`
+// 	TokenValue string `gorm:"not null" json:"token_value"`
+// }
 
-type Account struct {
-	gorm.Model
-	Id       int64  `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"account_id"`
-	Login    string `gorm:"not null" json:"account_login"`
-	Password string `gorm:"not null" json:"account_password"`
-}
-
-type Token struct {
-	gorm.Model
-	Id         int64  `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"token_id"`
-	TokenValue string `gorm:"not null" json:"token_value"`
-}
-
-type AccountToken struct {
-	gorm.Model
-	Id           int64 `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"account_token_id"`
-	AccountRefer int64
-	TokenRefer   int64
-	Account      Account `gorm:"foreignKey:AccountRefer"`
-	Token        Token   `gorm:"foreignKey:TokenRefer"`
-}
+// type AccountToken struct {
+// 	gorm.Model
+// 	Id           int64 `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"account_token_id"`
+// 	AccountRefer int64
+// 	TokenRefer   int64
+// 	Account      Account `gorm:"foreignKey:AccountRefer"`
+// 	Token        Token   `gorm:"foreignKey:TokenRefer"`
+// }
 
 func Migrate() {
-	db, err := gorm.Open(postgres.Open(db_internal.GetConnectionToSSOAccounts()), &gorm.Config{})
+	//MUST BE REFACTORED TO CALL MIGRATIONS FROM 'migrations' FOLDER
 
-	if err != nil {
-		log.Fatalln(err)
-		return
-	}
+	// db, err := gorm.Open(postgres.Open(db_internal.GetConnectionToSSOAccounts()), &gorm.Config{})
 
-	err = db.AutoMigrate(&Account{}, &Token{}, &AccountToken{})
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// 	return
+	// }
 
-	if err != nil {
-		log.Fatalln(err)
-		return
-	}
+	// err = db.AutoMigrate(&Account{}, &Token{}, &AccountToken{})
 
-	db.Set("gorm:table_options", "ENGINE=PostgreSQL")
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// 	return
+	// }
 
-	log.Println("Migration completed sucsessfully")
+	// db.Set("gorm:table_options", "ENGINE=PostgreSQL")
+
+	// log.Println("Migration completed sucsessfully")
 }
