@@ -14,6 +14,11 @@ func RegisterAccount(account models.Account) int64 {
 	return id
 }
 
+func Login(login string, pass string) string {
+	res := dbLogic.Login(login, pass)
+	return res
+}
+
 func GetToken(id int64) {
 
 }

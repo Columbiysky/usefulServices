@@ -20,6 +20,10 @@ func RegisterAccount(context *gin.Context) {
 	logic.RegisterAccount(acc)
 }
 
+func Login(context *gin.Context) {
+	logic.Login("t", "t")
+}
+
 func RegisterActivity(context *gin.Context) {
 	log.Printf("RegisterActivity")
 }

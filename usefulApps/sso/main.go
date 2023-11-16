@@ -14,6 +14,7 @@ func main() {
 	router.GET("/getAccount/", accountController.GetAccount)
 	router.POST("/registerAccount/", accountController.RegisterAccount)
 	router.POST("/registerActivity/", accountController.RegisterActivity)
+	router.GET("/login/", accountController.Login)
 
 	router.Run()
 }
