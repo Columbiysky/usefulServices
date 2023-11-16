@@ -18,6 +18,10 @@ jobs:
       with:
         go-version: '1.21'
 
+    - name: Build dbTool
+      working-directory: usefulApps/dbTool
+      run: go build -v .
+
     - name: Build sso
       working-directory: usefulApps/sso
       run: go build -v .
