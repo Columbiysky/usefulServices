@@ -1,0 +1,1 @@
+atlas migrate apply --url "postgresql://postgres:0o9i*U&Y@cbsky.ru:5432/postgres?sslmode=disable&&TimeZone=Europe/London" --dir "file://migrations" --allow-dirty
