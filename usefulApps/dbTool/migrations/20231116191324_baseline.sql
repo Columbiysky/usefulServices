@@ -8,8 +8,6 @@ CREATE TABLE "public"."accounts" (
   "password" text NOT NULL,
   PRIMARY KEY ("id")
 );
--- Create index "accounts_login_key" to table: "accounts"
-CREATE UNIQUE INDEX "accounts_login_key" ON "public"."accounts" ("login");
 -- Create index "idx_accounts_deleted_at" to table: "accounts"
 CREATE INDEX "idx_accounts_deleted_at" ON "public"."accounts" ("deleted_at");
 -- Create "tokens" table

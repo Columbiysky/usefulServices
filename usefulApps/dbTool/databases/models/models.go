@@ -9,7 +9,7 @@ import (
 type Account struct {
 	gorm.Model
 	Id       int64  `gorm:"primaryKey;not null;autoIncrement:1;autoIncrementIncrement:1" json:"account_id"`
-	Login    string `gorm:"not null;unique" json:"account_login"`
+	Login    string `gorm:"not null" json:"account_login"`
 	Password string `gorm:"not null" json:"account_password"`
 }
 

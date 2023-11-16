@@ -1,13 +1,10 @@
 package main
 
 import (
-	"log"
-
-	_ "ariga.io/atlas-provider-gorm/gormschema"
+	"dbTool/databases"
 )
 
 func main() {
-	log.Println("its a migrator")
-	// databases.CreateDatabases()
-	// databases.Migrate()
+	databases.CreateDatabases()
+	databases.Migrate()
 }
