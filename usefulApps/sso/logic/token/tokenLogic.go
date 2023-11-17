@@ -6,6 +6,7 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"io"
+	"log"
 	"strconv"
 	"time"
 )
@@ -16,7 +17,7 @@ func GenerateTokenForAccount(accountId int, accountLogin string) string {
 	key := make([]byte, 32)
 	_, err := rand.Read(key)
 	if err != nil {
-		// handle error here
+		log.Fatalln(err)
 	}
 
 	token := encrypt(key, strconv.Itoa(accountId)+accountLogin+nowInUtcAsString)
