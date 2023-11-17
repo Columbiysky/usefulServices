@@ -9,17 +9,12 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetAccount(id int64) {
+func GetAccount(id int) {
 
 }
 
-func RegisterAccount(account models.Account) int64 {
-	dbConn, err := gorm.Open(postgres.Open(base.GetConnectionToSSOAccounts()), &gorm.Config{})
-
-	if err != nil {
-		log.Fatalln(err)
-		return -1
-	}
+func RegisterAccount(account models.Account) int {
+	dbConn := getConnection()
 
 	dbEntity := models.Account{
 		Login:    "t",
@@ -31,28 +26,41 @@ func RegisterAccount(account models.Account) int64 {
 	return dbEntity.Id
 }
 
-func Login(login string, pass string) string {
-	dbConn, err := gorm.Open(postgres.Open(base.GetConnectionToSSOAccounts()), &gorm.Config{})
-
-	if err != nil {
-		log.Fatalln(err)
-		return ""
-	}
+func GetAccountByLoginAndPassword(login string, pass string) *models.Account {
+	dbConn := getConnection()
 
 	var account models.Account
 	dbConn.Where(map[string]interface{}{"login": login, "password": pass}).First(&account)
 
 	if account.Id != 0 {
-		return "t"
+		return &account
 	}
 
-	return "f"
+	log.Fatalln("Account not found. Wrong login or password")
+	return nil
 }
 
-func GetToken(id int64) {
+func GetToken(accountId int) string {
+	dbConn := getConnection()
+	var accountToken models.AccountToken
+	var token models.Token
+	dbConn.Where("account_id = ?", accountId).First(&accountToken)
+	dbConn.Where("id = ?", accountToken.TokenReferId).First(&token)
 
+	return token.TokenValue
 }
 
 func RegisterActivity(token string) {
 
+}
+
+func getConnection() *gorm.DB {
+	dbConn, err := gorm.Open(postgres.Open(base.GetConnectionToSSOAccounts()), &gorm.Config{})
+
+	if err != nil {
+		log.Fatalln(err)
+		return nil
+	}
+
+	return dbConn
 }
