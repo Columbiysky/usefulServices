@@ -3,7 +3,7 @@ package accountController
 import (
 	"log"
 
-	"sso/logic"
+	accLogic "sso/logic/account"
 	"sso/models"
 
 	"github.com/gin-gonic/gin"
@@ -17,11 +17,11 @@ func RegisterAccount(context *gin.Context) {
 	var acc models.Account
 
 	// context.BindJSON(&acc)
-	logic.RegisterAccount(acc)
+	accLogic.RegisterAccount(acc)
 }
 
 func Login(context *gin.Context) {
-	logic.Login("t", "t")
+	accLogic.Login("t", "t")
 }
 
 func RegisterActivity(context *gin.Context) {

@@ -24,6 +24,12 @@ func GenerateTokenForAccount(accountId int, accountLogin string) string {
 	return token
 }
 
+func RegisterActivity(tokenValue string) {
+	//time := time.Now().UTC().String()
+
+	// todo: ну понятно что продолжить, и выкинуть получение токена из логики аккаунта
+}
+
 // fully stolen from https://gist.github.com/manishtpatel/8222606#file-main-go-L27
 // encrypt string to base64 crypto using AES
 func encrypt(key []byte, text string) string {
