@@ -1,0 +1,1 @@
+ALTER TABLE sso.tokens DROP COLUMN last_activity_time;
