@@ -7,6 +7,7 @@ import (
 	"encoding/base64"
 	"io"
 	"log"
+	tokenDb "sso/dbLogic/token"
 	"strconv"
 	"time"
 )
@@ -25,9 +26,11 @@ func GenerateTokenForAccount(accountId int, accountLogin string) string {
 }
 
 func RegisterActivity(tokenValue string) {
-	//time := time.Now().UTC().String()
+	tokenDb.RegisterActivity(tokenValue)
+}
 
-	// todo: ну понятно что продолжить, и выкинуть получение токена из логики аккаунта
+func registerToken() {
+
 }
 
 // fully stolen from https://gist.github.com/manishtpatel/8222606#file-main-go-L27

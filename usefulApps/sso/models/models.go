@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Account struct {
 	Id       int    `gorm:"not null" json:"account_id"`
 	Login    string `gorm:"not null" json:"account_login"`
@@ -11,8 +13,9 @@ func (Account) TableName() string {
 }
 
 type Token struct {
-	Id         int    `gorm:"not null" json:"token_id"`
-	TokenValue string `gorm:"not null" json:"token_value"`
+	Id               int       `gorm:"not null" json:"token_id"`
+	TokenValue       string    `gorm:"not null" json:"token_value"`
+	LastActivityTime time.Time `gorm:"not null" json:"last_activity_time"`
 }
 
 func (Token) TableName() string {

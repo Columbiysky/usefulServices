@@ -1,4 +1,4 @@
-package accountController
+package controllers
 
 import (
 	"log"
