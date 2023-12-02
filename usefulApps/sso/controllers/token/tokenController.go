@@ -1,14 +1,18 @@
 package controllers
 
 import (
-	tokenLogic "sso/logic/token"
+	tokenLogic "sso/dbLogic/token"
 
 	"github.com/gin-gonic/gin"
 )
 
-func RegisterActivity(context *gin.Context) {
-	var tokenValue string
+type TokenValueStruct struct {
+	Value string `json:"value"`
+}
 
-	// context.BindJSON(&tokenValue)
-	tokenLogic.RegisterActivity(tokenValue)
+func RegisterActivity(context *gin.Context) {
+	var tokenValue TokenValueStruct
+	context.BindJSON(&tokenValue)
+
+	tokenLogic.RegisterActivity(tokenValue.Value)
 }
