@@ -1,6 +1,6 @@
 module dbTool
 
-go 1.21.4
+go 1.21.5
 
 require (
 	github.com/spf13/viper v1.17.0
