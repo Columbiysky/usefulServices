@@ -6,7 +6,6 @@ require github.com/gin-gonic/gin v1.9.1
 
 require (
 	github.com/chenzhuoyu/iasm v0.9.0 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )
 
