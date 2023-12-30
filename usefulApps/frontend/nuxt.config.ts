@@ -13,27 +13,11 @@ export default defineNuxtConfig({
     ],
     primevue: {
         usePrimeVue: true,
-        options: {},
+        options: {
+            ripple: true,
+        },
         importPT: undefined,
         cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
-        components: {
-            prefix: '',
-            name: undefined,
-            include: undefined,
-            exclude: undefined
-        },
-        directives: {
-            prefix: '',
-            name: undefined,
-            include: undefined,
-            exclude: undefined
-        },
-        composables: {
-            prefix: '',
-            name: undefined,
-            include: undefined,
-            exclude: undefined
-        }
     },
     ssr: false,
 })
