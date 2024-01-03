@@ -15,7 +15,7 @@ func GetAccountById(context *gin.Context) {
 	id, err := strconv.ParseInt(parsedQuery["id"][0], 10, 10)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	result := accLogic.GetAccountById(id)
