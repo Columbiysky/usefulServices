@@ -3,17 +3,20 @@ package logic
 import (
 	accDb "sso/dbLogic/account"
 	token "sso/logic/token"
+	"sso/models"
 )
 
-func Login(login string, pass string) string {
-	account := accDb.GetAccountByLoginAndPassword(login, pass)
+func Login(acc models.AccountLoginDbo) *models.TokenValueDto {
+	account := accDb.GetAccountByLoginAndPassword(acc.Login, acc.Password)
 
 	if account != nil {
 		res := token.GenerateTokenForAccount(account.Id, account.Login)
-		return res
+		return &models.TokenValueDto{
+			TokenValue: res,
+		}
 	}
 
-	return ""
+	return nil
 }
 
 func GetToken(id int64) {

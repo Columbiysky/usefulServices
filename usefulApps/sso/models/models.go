@@ -12,6 +12,15 @@ func (Account) TableName() string {
 	return "sso.accounts"
 }
 
+type AccountLoginDbo struct {
+	Login    string `gorm:"not null" json:"account_login"`
+	Password string `gorm:"not null" json:"account_password"`
+}
+
+func (AccountLoginDbo) TableName() string {
+	return "sso.accounts"
+}
+
 type Token struct {
 	Id               int       `gorm:"not null" json:"token_id"`
 	TokenValue       string    `gorm:"not null" json:"token_value"`
@@ -20,6 +29,10 @@ type Token struct {
 
 func (Token) TableName() string {
 	return "sso.tokens"
+}
+
+type TokenValueDto struct {
+	TokenValue string `gorm:"not null" json:"token_value"`
 }
 
 type AccountToken struct {

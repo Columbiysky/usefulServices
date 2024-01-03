@@ -12,7 +12,7 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 
-	router.GET("/login/", accountController.Login)
+	router.POST("/login/", accountController.Login)
 	router.POST("/registerActivity/", tokenController.RegisterActivity)
 
 	router.Run()
