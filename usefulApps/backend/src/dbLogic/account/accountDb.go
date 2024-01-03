@@ -9,8 +9,18 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetAccount(id int) {
+func GetAccountById(id int64) *models.Account {
+	dbConn := getConnection()
 
+	var account models.Account
+	dbConn.First(&account, id)
+
+	if account.Id != 0 {
+		return &account
+	}
+
+	log.Fatalln("Account not found. Wrong id")
+	return nil
 }
 
 func RegisterAccount(account models.Account) int {

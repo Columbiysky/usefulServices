@@ -20,7 +20,7 @@ func main() {
 
 	router.POST("/upload", controllers.HelloFile)
 
-	router.GET("/getAccount/", accountController.GetAccount)
+	router.GET("/getAccountById", accountController.GetAccountById)
 	router.POST("/registerAccount/", accountController.RegisterAccount)
 
 	router.Run()
