@@ -12,8 +12,6 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 
-	router.GET("/getAccount/", accountController.GetAccount)
-	router.POST("/registerAccount/", accountController.RegisterAccount)
 	router.GET("/login/", accountController.Login)
 	router.POST("/registerActivity/", tokenController.RegisterActivity)
 

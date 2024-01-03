@@ -2,6 +2,7 @@ package main
 
 import (
 	"main/controllers"
+	accountController "main/controllers/account"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -18,6 +19,9 @@ func main() {
 	router.GET("/helloFromPyServ/", controllers.HelloFromPyServ)
 
 	router.POST("/upload", controllers.HelloFile)
+
+	router.GET("/getAccount/", accountController.GetAccount)
+	router.POST("/registerAccount/", accountController.RegisterAccount)
 
 	router.Run()
 }
