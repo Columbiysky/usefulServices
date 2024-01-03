@@ -25,15 +25,8 @@ func GetAccountById(id int64) *models.Account {
 
 func RegisterAccount(account models.Account) int {
 	dbConn := getConnection()
-
-	dbEntity := models.Account{
-		Login:    "t",
-		Password: "t",
-	}
-
-	dbConn.Create(&dbEntity)
-
-	return dbEntity.Id
+	dbConn.Create(&account)
+	return account.Id
 }
 
 func GetAccountByLoginAndPassword(login string, pass string) *models.Account {

@@ -25,6 +25,9 @@ func GetAccountById(context *gin.Context) {
 func RegisterAccount(context *gin.Context) {
 	var acc models.Account
 
-	// context.BindJSON(&acc)
-	accLogic.RegisterAccount(acc)
+	if err := context.BindJSON(&acc); err != nil {
+		log.Println(err)
+	}
+	result := accLogic.RegisterAccount(acc)
+	context.JSON(http.StatusOK, result)
 }

@@ -11,6 +11,6 @@ func GetAccountById(id int64) *models.Account {
 }
 
 func RegisterAccount(account models.Account) int {
-	id := accDb.RegisterAccount(account)
-	return id
+	newId := accDb.RegisterAccount(account)
+	return newId
 }
