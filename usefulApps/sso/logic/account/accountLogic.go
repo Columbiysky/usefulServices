@@ -3,17 +3,7 @@ package logic
 import (
 	accDb "sso/dbLogic/account"
 	token "sso/logic/token"
-	"sso/models"
 )
-
-func GetAccount(id int64) {
-
-}
-
-func RegisterAccount(account models.Account) int {
-	id := accDb.RegisterAccount(account)
-	return id
-}
 
 func Login(login string, pass string) string {
 	account := accDb.GetAccountByLoginAndPassword(login, pass)
