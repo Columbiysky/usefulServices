@@ -36,7 +36,7 @@ func GetAccountByLoginAndPassword(login string, pass string) *models.Account {
 		return &account
 	}
 
-	log.Fatalln("Account not found. Wrong login or password")
+	log.Println("Account not found. Wrong login or password")
 	return nil
 }
 
