@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	accLogic "backend/logic/account"
+	models "backend/models"
 	"log"
-	accLogic "main/logic/account"
-	models "main/models"
 	"net/http"
 	"strconv"
 
@@ -15,7 +15,7 @@ func GetAccountById(context *gin.Context) {
 	id, err := strconv.ParseInt(parsedQuery["id"][0], 10, 10)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	result := accLogic.GetAccountById(id)

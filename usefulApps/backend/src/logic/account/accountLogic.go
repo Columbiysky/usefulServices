@@ -1,8 +1,8 @@
 package logic
 
 import (
-	accDb "main/dbLogic/account"
-	"main/models"
+	accDb "backend/dbLogic/account"
+	"backend/models"
 )
 
 func GetAccountById(id int64) *models.Account {

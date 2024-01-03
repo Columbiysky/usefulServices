@@ -1,9 +1,9 @@
 package dbLogic
 
 import (
+	"backend/dbLogic/base"
+	"backend/models"
 	"log"
-	"main/dbLogic/base"
-	"main/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -19,7 +19,7 @@ func GetAccountById(id int64) *models.Account {
 		return &account
 	}
 
-	log.Fatalln("Account not found. Wrong id")
+	log.Println("Account not found. Wrong id")
 	return nil
 }
 
@@ -39,7 +39,7 @@ func GetAccountByLoginAndPassword(login string, pass string) *models.Account {
 		return &account
 	}
 
-	log.Fatalln("Account not found. Wrong login or password")
+	log.Println("Account not found. Wrong login or password")
 	return nil
 }
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"main/controllers"
-	accountController "main/controllers/account"
+	"backend/controllers"
+	accountController "backend/controllers/account"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	logic "main/logic/hello"
-	"main/logic/hello/params"
+	logic "backend/logic/hello"
+	"backend/logic/hello/params"
 
 	"github.com/gin-gonic/gin"
 )

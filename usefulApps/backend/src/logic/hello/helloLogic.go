@@ -1,10 +1,10 @@
 package logic
 
 import (
+	"backend/logic/hello/params"
 	"fmt"
 	"io"
 	"log"
-	"main/logic/hello/params"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
