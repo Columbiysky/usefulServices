@@ -11,6 +11,7 @@ func Login(acc models.AccountLoginDbo) *models.TokenValueDto {
 
 	if account != nil {
 		res := token.GenerateTokenForAccount(account.Id, account.Login)
+		token.RegisterToken(account.Id, res)
 		return &models.TokenValueDto{
 			TokenValue: res,
 		}

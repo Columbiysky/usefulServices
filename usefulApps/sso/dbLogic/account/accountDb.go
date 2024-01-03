@@ -45,7 +45,7 @@ func GetToken(accountId int) string {
 	var accountToken models.AccountToken
 	var token models.Token
 	dbConn.Where("account_id = ?", accountId).First(&accountToken)
-	dbConn.Where("id = ?", accountToken.TokenReferId).First(&token)
+	dbConn.Where("id = ?", accountToken.TokenId).First(&token)
 
 	return token.TokenValue
 }

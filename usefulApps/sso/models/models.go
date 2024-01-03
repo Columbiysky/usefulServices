@@ -36,9 +36,9 @@ type TokenValueDto struct {
 }
 
 type AccountToken struct {
-	Id             int `gorm:"not null" json:"account_token_id"`
-	AccountReferId int
-	TokenReferId   int
+	Id        int `gorm:"not null" json:"account_token_id"`
+	AccountId int `gorm:"not null" json:"account_id"`
+	TokenId   int `gorm:"not null" json:"token_id"`
 }
 
 func (AccountToken) TableName() string {

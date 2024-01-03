@@ -29,8 +29,8 @@ func RegisterActivity(tokenValue string) {
 	tokenDb.RegisterActivity(tokenValue)
 }
 
-func registerToken() {
-
+func RegisterToken(accountId int, tokenValue string) {
+	tokenDb.RegisterToken(accountId, tokenValue)
 }
 
 // fully stolen from https://gist.github.com/manishtpatel/8222606#file-main-go-L27
