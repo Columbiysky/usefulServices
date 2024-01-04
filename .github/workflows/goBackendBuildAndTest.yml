@@ -29,5 +29,6 @@ jobs:
         working-directory: usefulApps/backend/src
         run: go build -v .
 
-    # - name: Test
-    #   run: go test -v ./...
+      - name: Test sso
+        working-directory: usefulApps/sso
+        run: go test -v .
