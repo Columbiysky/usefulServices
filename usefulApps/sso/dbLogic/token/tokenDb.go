@@ -15,8 +15,13 @@ func RegisterActivity(tokenValue string) {
 
 	var token models.Token
 	dbConn.Where("token_value = ?", tokenValue).First(&token)
+	if token.Id == 0 {
+		log.Println("Token doesn't exist")
+		return
+	}
 	token.LastActivityTime = time.Now().UTC()
 	dbConn.Save(&token)
+
 }
 
 func RegisterToken(accountId int, tokenValue string) {
