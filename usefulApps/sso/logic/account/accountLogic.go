@@ -7,7 +7,7 @@ import (
 )
 
 func Login(acc models.AccountLoginDbo) *models.TokenValueDto {
-	account := accDb.GetAccountByLoginAndPassword(acc.Login, acc.Password)
+	account := accDb.Login(acc.Login, acc.Password)
 
 	if account != nil {
 		res := token.GenerateTokenForAccount(account.Id, account.Login)
