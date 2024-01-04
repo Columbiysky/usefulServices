@@ -1,2 +1,2 @@
-cd ..\usefulApps\frontend
+cd ..\..\usefulApps\frontend
 npm run dev

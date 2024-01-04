@@ -1,2 +1,2 @@
-cd ..\usefulApps\backend\src
+cd ..\..\usefulApps\backend\src
 air

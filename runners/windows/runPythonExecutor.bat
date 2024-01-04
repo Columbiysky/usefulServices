@@ -1,2 +1,2 @@
-cd ..\usefulApps\executors\python
+cd ..\..\usefulApps\executors\python
 python main.py
