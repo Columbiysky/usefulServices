@@ -9,6 +9,7 @@ import (
 
 func GetConnectionToSSOAccounts() string {
 	viper.AddConfigPath(".")
+	viper.AddConfigPath("..")
 	viper.SetConfigName("config") // Register config file name (no extension)
 	viper.SetConfigType("json")   // Look for specific type
 	err := viper.ReadInConfig()
