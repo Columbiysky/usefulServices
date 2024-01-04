@@ -9,24 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetAccount(id int) {
-
-}
-
-func RegisterAccount(account models.Account) int {
-	dbConn := getConnection()
-
-	dbEntity := models.Account{
-		Login:    "t",
-		Password: "t",
-	}
-
-	dbConn.Create(&dbEntity)
-
-	return dbEntity.Id
-}
-
-func GetAccountByLoginAndPassword(login string, pass string) *models.Account {
+func Login(login string, pass string) *models.Account {
 	dbConn := getConnection()
 
 	var account models.Account
@@ -38,20 +21,6 @@ func GetAccountByLoginAndPassword(login string, pass string) *models.Account {
 
 	log.Println("Account not found. Wrong login or password")
 	return nil
-}
-
-func GetToken(accountId int) string {
-	dbConn := getConnection()
-	var accountToken models.AccountToken
-	var token models.Token
-	dbConn.Where("account_id = ?", accountId).First(&accountToken)
-	dbConn.Where("id = ?", accountToken.TokenId).First(&token)
-
-	return token.TokenValue
-}
-
-func RegisterActivity(token string) {
-
 }
 
 func getConnection() *gorm.DB {
