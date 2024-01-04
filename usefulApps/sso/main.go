@@ -14,6 +14,7 @@ func main() {
 
 	router.POST("/login/", accountController.Login)
 	router.POST("/registerActivity/", tokenController.RegisterActivity)
+	router.GET("/checkToken", tokenController.CheckToken)
 
 	router.Run()
 }

@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	tokenDb "sso/dbLogic/token"
+	"sso/models"
 	"strconv"
 	"time"
 )
@@ -22,6 +23,11 @@ func GenerateTokenForAccount(accountId int, accountLogin string) string {
 	}
 
 	token := encrypt(key, strconv.Itoa(accountId)+accountLogin+nowInUtcAsString)
+	return token
+}
+
+func GetToken(tokenValue string) *models.Token {
+	token := tokenDb.GetToken(tokenValue)
 	return token
 }
 
