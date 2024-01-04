@@ -19,11 +19,3 @@ func Login(acc models.AccountLoginDbo) *models.TokenValueDto {
 
 	return nil
 }
-
-func GetToken(id int64) {
-
-}
-
-func RegisterActivity(token string) {
-
-}

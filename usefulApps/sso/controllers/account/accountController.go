@@ -20,7 +20,3 @@ func Login(context *gin.Context) {
 	tokenValue := accLogic.Login(acc)
 	context.JSON(http.StatusOK, tokenValue)
 }
-
-func RegisterActivity(context *gin.Context) {
-	log.Printf("RegisterActivity")
-}
