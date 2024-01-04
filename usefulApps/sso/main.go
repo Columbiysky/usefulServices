@@ -16,5 +16,5 @@ func main() {
 	router.POST("/registerActivity/", tokenController.RegisterActivity)
 	router.GET("/checkToken", tokenController.CheckToken)
 
-	router.Run()
+	router.Run("127.0.0.1:8081")
 }
