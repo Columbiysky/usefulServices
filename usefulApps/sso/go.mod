@@ -6,6 +6,7 @@ require (
 	github.com/gin-contrib/cors v1.5.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-co-op/gocron/v2 v2.1.2
+	github.com/samber/lo v1.39.0
 	github.com/spf13/viper v1.18.2
 	gorm.io/driver/postgres v1.5.4
 	gorm.io/gorm v1.25.5
