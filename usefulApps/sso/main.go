@@ -4,6 +4,7 @@ import (
 	"log"
 	accountController "sso/controllers/account"
 	tokenController "sso/controllers/token"
+	tokenLogic "sso/logic/token"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -20,7 +21,7 @@ func main() {
 
 	s.NewJob(
 		gocron.DurationJob(
-			10*time.Second,
+			24*time.Hour,
 		),
 		gocron.NewTask(cleanOldTokens),
 	)
@@ -38,5 +39,5 @@ func main() {
 }
 
 func cleanOldTokens() {
-	log.Println("clean tokens")
+	tokenLogic.CleanOldTokens()
 }

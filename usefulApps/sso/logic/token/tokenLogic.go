@@ -39,6 +39,10 @@ func RegisterToken(accountId int, tokenValue string) {
 	tokenDb.RegisterToken(accountId, tokenValue)
 }
 
+func CleanOldTokens() {
+	tokenDb.CleanOldTokens()
+}
+
 // fully stolen from https://gist.github.com/manishtpatel/8222606#file-main-go-L27
 // encrypt string to base64 crypto using AES
 func encrypt(key []byte, text string) string {

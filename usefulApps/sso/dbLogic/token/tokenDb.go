@@ -6,6 +6,7 @@ import (
 	"sso/models"
 	"time"
 
+	"github.com/samber/lo"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -64,6 +65,22 @@ func RegisterToken(accountId int, tokenValue string) {
 		TokenId:   token.Id,
 	}
 	dbConn.Create(&accountToken)
+}
+
+func CleanOldTokens() {
+	dbConn := getConnection()
+
+	timeForRequest := time.Now().Add(-24 * time.Hour)
+	var tokens []models.Token
+	dbConn.Where("last_activity_time < ?", timeForRequest).Find(&tokens)
+
+	tokensIds := lo.Map(tokens, func(x models.Token, index int) int {
+		return x.Id
+	})
+	var account_tokens models.AccountToken
+	dbConn.Where("token_id in ?", tokensIds).Delete(&account_tokens)
+
+	dbConn.Where("id in ?", tokensIds).Delete(&tokens)
 }
 
 func getConnection() *gorm.DB {
