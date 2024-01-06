@@ -1,9 +1,11 @@
+import json
 from typing import Union
 
+import requests
 import uvicorn
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 from videoToGif.videoToGif import VideoToGif
 
@@ -25,7 +27,7 @@ app.add_middleware(
 
 @app.get('/')
 def rootHello():
-    return {'response': 'Hello World'}
+    return JSONResponse({'response': 'Hello World'})
 
 @app.post('/')
 def rootPost(obj: TestObj):
@@ -35,6 +37,26 @@ def rootPost(obj: TestObj):
 async def videoToGif(file: UploadFile):
     path, name, data = await VideoToGif.videoFilesInCurrentDir(file)
     return FileResponse(path=path, filename=name, media_type=data)
+
+@app.middleware("http")
+async def modify_request_response_middleware(request: Request, call_next):
+    tokenArr = request.headers.get('Authorization').split(' ')
+    while('' in tokenArr):
+        tokenArr.remove('')
+
+    if len(tokenArr) < 2:
+        return JSONResponse('Unauthorized', 401)
+    
+    token = tokenArr[1]
+    headers = {'Authorization' : 'Bearer ' + token}
+    ssoReq = requests.get('http://127.0.0.1:8081/checkToken', headers = headers)
+    tokenStatus = json.loads(ssoReq.text)["status"]
+    
+    if tokenStatus != 'exists' :
+        return JSONResponse('Unauthorized', 401)
+
+    response = await call_next(request)
+    return response
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
