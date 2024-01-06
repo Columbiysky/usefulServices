@@ -4,8 +4,8 @@ import uvicorn
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from ffmpeg.videoToGif import VideoToGif
 from pydantic import BaseModel
+from videoToGif.videoToGif import VideoToGif
 
 
 class TestObj(BaseModel):
@@ -22,17 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.get('/')
-def rootHello():
-    return {'response': 'Hello World'}
-
-
-@app.post('/')
-def rootPost(obj: TestObj):
-    return obj
-
 
 @app.post('/videoToGif')
 async def videoToGif(file: UploadFile):

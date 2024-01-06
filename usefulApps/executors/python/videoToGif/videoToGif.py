@@ -20,6 +20,3 @@ class VideoToGif:
         videoClip.close()
 
         return os.path.join(dirWithInVideos,"videoAsGif.gif"), "videoAsGif.gif", 'multipart/form-data'
-    
-    def test ():
-        return 'test VideoToGif'
