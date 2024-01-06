@@ -23,6 +23,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/')
+def rootHello():
+    return {'response': 'Hello World'}
+
+@app.post('/')
+def rootPost(obj: TestObj):
+    return obj
+
 @app.post('/videoToGif')
 async def videoToGif(file: UploadFile):
     path, name, data = await VideoToGif.videoFilesInCurrentDir(file)
