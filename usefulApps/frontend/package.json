@@ -12,7 +12,7 @@
     "@nuxtjs/router": "^1.7.0",
     "@types/lodash": "^4.14.195",
     "@types/node": "^20.0.0",
-    "nuxt": "^3.9.0",
+    "nuxt": "^3.9.1",
     "nuxt-primevue": "^0.2.0"
   },
   "dependencies": {
