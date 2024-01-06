@@ -13,13 +13,16 @@ class TestMainApi(unittest.TestCase):
         pass
 
     def test_rootHello(self):
-        response = client.get("/")
+        headers = {'Authorization' : 'Bearer CI_TEST'}
+        response = client.get("/", headers=headers)
         assert response.status_code == 200
         assert response.json() == {"response": "Hello World"}
 
     def test_rootPost(self):
+        headers = {'Authorization' : 'Bearer CI_TEST'}
+        response = client.get("/",headers=headers)
         response = client.post(
-            "/", headers={"X-Token": "coneofsilence"}, json={"id": "1", "name": "test"})
+            "/", headers={"X-Token": "coneofsilence", 'Authorization' : 'Bearer CI_TEST'}, json={"id": "1", "name": "test"})
         assert response.status_code == 200
         diff = DeepDiff(response.json(), {
                         "id": "1", "name": "test"}, ignore_order=True)
