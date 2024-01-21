@@ -23,5 +23,5 @@ func main() {
 	router.GET("/getAccountById", accountController.GetAccountById)
 	router.POST("/registerAccount/", accountController.RegisterAccount)
 
-	router.Run()
+	router.Run(":30000")
 }
