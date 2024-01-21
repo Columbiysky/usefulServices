@@ -37,6 +37,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./usefulApps/backend/src/Dockerfile
           push: false
-          tags: theTag
+          tags: backend:latest
