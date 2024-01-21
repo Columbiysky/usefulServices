@@ -33,10 +33,10 @@ jobs:
         working-directory: usefulApps/sso/tests
         run: go test -v .
 
-      - name: Build dockerFile
+      - name: Build backend docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./usefulApps/backend/src/Dockerfile
+          context: usefulApps/backend/src
+          file: ./Dockerfile
           push: false
           tags: backend:latest
