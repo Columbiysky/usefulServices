@@ -32,19 +32,3 @@ jobs:
       - name: Test sso
         working-directory: usefulApps/sso/tests
         run: go test -v .
-
-      - name: Build backend docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./usefulApps/backend/src
-          file: ./usefulApps/backend/src/Dockerfile
-          push: false
-          tags: backend:latest
-
-      - name: Build sso docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./usefulApps/sso
-          file: ./usefulApps/sso/Dockerfile
-          push: false
-          tags: sso:latest

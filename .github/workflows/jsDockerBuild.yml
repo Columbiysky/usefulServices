@@ -1,0 +1,22 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build frontend docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./usefulApps/frontend
+          file: ./usefulApps/frontend/Dockerfile
+          push: false
+          tags: frontend:latest

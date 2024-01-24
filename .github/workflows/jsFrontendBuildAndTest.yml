@@ -25,11 +25,3 @@ jobs:
       # - name: Test
       #   working-directory: usefulApps/frontend
       #   run: npm test
-
-      - name: Build frontend docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./usefulApps/frontend
-          file: ./usefulApps/frontend/Dockerfile
-          push: false
-          tags: frontend:latest
