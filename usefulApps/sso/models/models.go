@@ -35,6 +35,10 @@ type TokenValueDto struct {
 	TokenValue string `gorm:"not null" json:"token_value"`
 }
 
+type ErrorMessage struct {
+	Message string `json:"message"`
+}
+
 type AccountToken struct {
 	Id        int `gorm:"not null" json:"account_token_id"`
 	AccountId int `gorm:"not null" json:"account_id"`
