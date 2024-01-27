@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	accLogic "sso/logic/account"
+	tokenLogic "sso/logic/token"
 )
 
 func TestLogin(t *testing.T) {
@@ -17,4 +18,10 @@ func TestLogin(t *testing.T) {
 	if res == nil {
 		t.Error("Result was incorrect, got nil")
 	}
+
+	cleanup()
+}
+
+func cleanup() {
+	tokenLogic.CleanOldTokens()
 }
