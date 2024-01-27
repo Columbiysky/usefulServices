@@ -49,12 +49,11 @@ export default {
                     }
                 },
                 onRequestError({ request, options, error }) {
-                    console.log(error);
+                    _this.errorMessage = error.message;
                 },
                 onResponseError({ request, response, options }) {
                     const err = response._data as IErrorMessage;
-                    _this.errorMessage = err.message
-                    console.log(err.message);
+                    _this.errorMessage = err.message;
                 }
             });
         }
