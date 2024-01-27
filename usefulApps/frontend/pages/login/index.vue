@@ -9,9 +9,7 @@
                 <Password id="password" v-model="password" :feedback="false" />
             </div>
 
-            <!-- <div class="button-input"> -->
             <Button class="button-input" label="Login" @click="buttonClick()"></Button>
-            <!-- </div> -->
         </div>
     </div>
 </template>
