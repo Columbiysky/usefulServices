@@ -18,5 +18,12 @@ func Login(context *gin.Context) {
 	}
 
 	tokenValue := accLogic.Login(acc)
-	context.JSON(http.StatusOK, tokenValue)
+
+	if tokenValue != nil {
+		context.JSON(http.StatusOK, tokenValue)
+		return
+	}
+
+	errorMessage := models.ErrorMessage{Message: "Account not found. Wrong login or password"}
+	context.JSON(http.StatusNotFound, errorMessage)
 }
