@@ -1,12 +1,17 @@
 <template>
     <div class="container">
-        <div class="flex flex-column gap-2">
-            <small for="login">Login</small>
+        <div class="login-box">
+            <label for="login">Login</label>
             <InputText id="login" v-model="login" />
-            <small for="password">Password</small>
-            <Password v-model="password" :feedback="false" />
+            <label class="password-input" for="password">Password</label>
 
-            <Button label="Login" @click="buttonClick()"></Button>
+            <div class="password-input">
+                <Password id="password" v-model="password" :feedback="false" />
+            </div>
+
+            <!-- <div class="button-input"> -->
+            <Button class="button-input" label="Login" @click="buttonClick()"></Button>
+            <!-- </div> -->
         </div>
     </div>
 </template>
@@ -23,10 +28,6 @@ export default {
         buttonClick() {
             console.log(this.login)
             console.log(this.password)
-        },
-        onUpload() {
-            // const toast = useToast();
-            // toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
         }
     }
 }
@@ -35,6 +36,23 @@ export default {
 <style scoped>
 .container {
     display: block;
-    background-color: rgb(213, 222, 231);
+    padding-top: 20%;
+    padding-bottom: 15%;
+    background-color: rgb(236, 241, 246);
+}
+
+.login-box {
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding-left: 45%;
+}
+
+.password-input {
+    padding-top: 20px;
+}
+
+.button-input {
+    margin-top: 20px;
 }
 </style>
