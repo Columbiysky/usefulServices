@@ -45,7 +45,7 @@ export default {
                 onResponse({ request, response, options }) {
                     if (response.status === 200) {
                         const res = response._data as ITokenValueDto;
-                        console.log(res);
+                        localStorage.setItem('token', res.token_value);
                     }
                 },
                 onRequestError({ request, options, error }) {
