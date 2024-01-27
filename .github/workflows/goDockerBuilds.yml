@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
+  build-backend-docker-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,6 +19,11 @@ jobs:
           file: ./usefulApps/backend/src/Dockerfile
           push: false
           tags: backend:latest
+
+  build-sso-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Build sso docker image
         uses: docker/build-push-action@v5
