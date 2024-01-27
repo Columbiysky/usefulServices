@@ -1,4 +1,4 @@
-name: Go build and test
+name: Go builds and tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
+  build-dbTool:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,13 +21,43 @@ jobs:
         working-directory: usefulApps/tools/dbTool
         run: go build -v .
 
+  build-sso:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
       - name: Build sso
         working-directory: usefulApps/sso
         run: go build -v .
 
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
       - name: Build backend
         working-directory: usefulApps/backend/src
         run: go build -v .
+
+  test-sso:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
 
       - name: Test sso
         working-directory: usefulApps/sso/tests
