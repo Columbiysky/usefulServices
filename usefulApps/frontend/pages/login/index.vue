@@ -46,6 +46,7 @@ export default {
                     if (response.status === 200) {
                         const res = response._data as ITokenValueDto;
                         localStorage.setItem('token', res.token_value);
+                        navigateTo({ path: "/youtubeDownloader" })
                     }
                 },
                 onRequestError({ request, options, error }) {
