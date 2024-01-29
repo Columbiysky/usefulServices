@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Build frontend docker image
         uses: docker/build-push-action@v5
         with:
@@ -20,5 +22,5 @@ jobs:
           file: ./usefulApps/frontend/Dockerfile
           push: false
           tags: frontend:latest
-          cache-from: type=registry,ref=frontend:buildcache
-          cache-to: type=registry,ref=frontend:buildcache,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
