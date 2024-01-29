@@ -17,3 +17,6 @@ go get .
 cd ..\..
 cd tools\dbTool
 go get .
+
+echo "finished..."
+pause
