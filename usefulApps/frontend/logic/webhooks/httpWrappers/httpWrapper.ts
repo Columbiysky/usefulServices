@@ -26,4 +26,4 @@ export default class HttpWrapper {
         return useFetch(url, options);
     }
 }
-//test ci
+//test ci docker build
