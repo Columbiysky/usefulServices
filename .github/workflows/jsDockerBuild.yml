@@ -20,3 +20,5 @@ jobs:
           file: ./usefulApps/frontend/Dockerfile
           push: false
           tags: frontend:latest
+          cache-from: type=registry,ref=frontend:buildcache
+          cache-to: type=registry,ref=frontend:buildcache,mode=max
