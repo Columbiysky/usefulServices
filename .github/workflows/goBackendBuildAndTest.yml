@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v4
         env:
           working-directory: usefulApps/tools/dbTool
-          cache-name: cache-go-dbtool-modules
+          cache-name: cache-go-dbtool-deps
         with:
           path: |
             ~/.cache/go-build
@@ -42,11 +42,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: "Columbiysky/usefulServices"
 
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: "1.21"
+
+      - name: Setup Golang caches
+        uses: actions/cache@v4
+        env:
+          working-directory: usefulApps/sso
+          cache-name: cache-go-sso-deps
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Build sso
         working-directory: usefulApps/sso
@@ -56,11 +73,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: "Columbiysky/usefulServices"
 
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: "1.21"
+
+      - name: Setup Golang caches
+        uses: actions/cache@v4
+        env:
+          working-directory: usefulApps/backend/src
+          cache-name: cache-go-backend-deps
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Build backend
         working-directory: usefulApps/backend/src
