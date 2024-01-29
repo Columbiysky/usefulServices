@@ -3,6 +3,8 @@ FROM node:lts-alpine
 WORKDIR /
 
 COPY package*.json ./
+RUN npm i
+
 COPY nuxt.config.ts ./
 COPY tsconfig.json ./
 COPY app.vue ./
@@ -19,7 +21,6 @@ COPY ./pages/*.vue ./pages/
 COPY ./plugins/*.js ./plugins/
 COPY ./public/*.ico ./public/
 
-RUN npm i
 RUN npm run build
 
 EXPOSE 30002

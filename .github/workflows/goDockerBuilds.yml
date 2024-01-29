@@ -10,8 +10,10 @@ jobs:
   build-backend-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Build backend docker image
         uses: docker/build-push-action@v5
         with:
@@ -19,12 +21,16 @@ jobs:
           file: ./usefulApps/backend/src/Dockerfile
           push: false
           tags: backend:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   build-sso-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Build sso docker image
         uses: docker/build-push-action@v5
         with:
@@ -32,3 +38,5 @@ jobs:
           file: ./usefulApps/sso/Dockerfile
           push: false
           tags: sso:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
