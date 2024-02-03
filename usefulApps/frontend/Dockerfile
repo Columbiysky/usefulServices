@@ -15,7 +15,7 @@ COPY ./data/exampleObject/*.ts ./data/exampleObject/
 COPY ./logic/webhooks/httpWrappers/*.ts ./logic/webhooks/httpWrappers/
 
 COPY ./pages/login/*.vue ./pages/login/
-COPY ./pages/youtubeDownloader/*.vue ./pages/youtubeDownloader/
+COPY ./pages/main/*.vue ./pages/main/
 COPY ./pages/*.vue ./pages/
 
 COPY ./plugins/*.js ./plugins/
