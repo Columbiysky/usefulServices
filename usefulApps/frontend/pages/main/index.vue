@@ -1,18 +1,29 @@
 <template>
     <div class="container">
-        <p>hsdfaksdjfhalksdhj</p>
+        <p>Available services:</p>
+        <ul>
+            <li><a href="https://google.com">Make the .gif from a video</a></li>
+        </ul>
     </div>
 </template>
 <style>
 .container {
     display: block;
     height: max-content;
-    padding-top: 20%;
-    padding-bottom: 11%;
     background-color: rgb(16, 45, 78);
 }
 
 p {
-    color: white;
+    color: aliceblue;
+}
+
+ul {
+    color: aliceblue;
+    list-style-type: circle;
+    list-style: circle;
+}
+
+a {
+    color: aliceblue;
 }
 </style>
