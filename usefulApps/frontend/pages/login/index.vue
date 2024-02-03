@@ -102,7 +102,7 @@ label {
 }
 
 .error-box {
-    color: red;
+    color: rgb(241, 58, 58);
     padding-top: 10px;
     text-align: center;
 }
