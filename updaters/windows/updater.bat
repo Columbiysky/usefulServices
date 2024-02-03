@@ -1,6 +1,7 @@
 cd ..\..\usefulApps
 cd backend\src
 go get .
+go mod tidy
 
 cd ..\..
 cd executors\python
@@ -13,10 +14,12 @@ npm i
 cd ..\..
 cd sso
 go get .
+go mod tidy
 
 cd ..\..
 cd tools\dbTool
 go get .
+go mod tidy
 
 echo "finished..."
 pause
