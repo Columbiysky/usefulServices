@@ -9,7 +9,6 @@ body,
 #__nuxt,
 #__layout {
   height: 99% !important;
-  width: 99% !important;
   background-color: rgb(16, 45, 78);
 }
 
