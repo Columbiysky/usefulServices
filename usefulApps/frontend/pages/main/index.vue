@@ -3,6 +3,7 @@
         <p>Available services:</p>
         <ul>
             <li><a href="https://google.com">Make the .gif from a video</a></li>
+            <li><a href="/finance">Finance</a></li>
         </ul>
     </div>
 </template>
