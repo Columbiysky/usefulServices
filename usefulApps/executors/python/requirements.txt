@@ -20,8 +20,8 @@ numpy==1.26.3
 ordered-set==4.1.0
 pillow==10.2.0
 proglog==0.1.10
+pydantic_core==2.16.2
 pydantic==2.6.1
-pydantic_core==2.16.1
 python-dotenv==1.0.1
 python-multipart==0.0.7
 PyYAML==6.0.1
