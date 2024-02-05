@@ -1,8 +1,27 @@
 <template>
     <div class="container">
-        <p>finance:</p>
+        <div class="panel">
+            <Button label="test button"></Button>
+            <PanelMenu :model="items">
+            </PanelMenu>
+        </div>
     </div>
 </template>
+<script setup lang="ts">
+    import { ref } from "vue";
+    const items = ref([
+        {
+            label: 'General',
+
+        }, {
+            label: 'Crypto'
+        }, {
+            label: 'Stocks'
+        }, {
+            label: 'Airbag'
+        },
+    ]);
+</script>
 <style>
 .container {
     display: block;
