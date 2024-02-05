@@ -1,22 +1,28 @@
 <template>
     <div class="container">
         <div class="login-box">
-            <label for="login">Login</label>
-            <InputText id="login" v-model="login" />
-            <label class="password-input" for="password">Password</label>
+            <div class="label-and-control">
+                <label for="login">Login</label>
+                <InputText id="login" v-model="login" />
+            </div>
 
-            <div class="password-input">
+            <div class="label-and-control">
+                <label for="password">Password</label>
                 <Password id="password" v-model="password" :feedback="false" />
             </div>
 
-            <Button class="button-input" label="Login" @click="loginFunc()"></Button>
+            <div class="label-and-control">
+                <Button class="button-input" label="Login" @click="loginFunc()"></Button>
+                <div class="error-box">
+                    <span> {{ errorMessage }}</span>
+                </div>
+            </div>
         </div>
 
-        <div class="error-box">
-            <span> {{ errorMessage }}</span>
-        </div>
+
     </div>
 </template>
+
 <script lang="ts">
 import type { IAccountLoginDto } from '~/data/account/IAccountLoginDto';
 import type { ITokenValueDto } from '~/data/account/ITokenValueDto';
@@ -46,7 +52,7 @@ export default {
                     if (response.status === 200) {
                         const res = response._data as ITokenValueDto;
                         localStorage.setItem('token', res.token_value);
-                        navigateTo({ path: "/youtubeDownloader" })
+                        navigateTo({ path: "/main" })
                     }
                 },
                 onRequestError({ request, options, error }) {
@@ -63,31 +69,41 @@ export default {
 </script>
 
 <style scoped>
+label {
+    color: white;
+}
+
 .container {
-    display: block;
-    padding-top: 20%;
-    padding-bottom: 11%;
-    background-color: rgb(101, 110, 120);
+    justify-content: center;
+    display: flex;
+    background-color: rgb(16, 45, 78);
+    height: 100%;
+    width: 100%;
 }
 
 .login-box {
     display: grid;
     grid-template-columns: 200px;
-    grid-template-rows: 1fr 1fr 1fr;
-    padding-left: 45%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+    padding-top: 15%;
+    padding-bottom: 20%;
+    height: auto;
 }
 
-.password-input {
-    padding-top: 20px;
+.label-and-control {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: 5px;
 }
 
 .button-input {
-    margin-top: 20px;
+    width: -webkit-fill-available;
 }
 
 .error-box {
-    color: red;
-    padding-top: 50px;
+    color: rgb(241, 58, 58);
+    padding-top: 10px;
     text-align: center;
 }
 </style>
