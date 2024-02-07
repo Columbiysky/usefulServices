@@ -1,6 +1,6 @@
 module sso
 
-go 1.21.6
+go 1.22.0
 
 require (
 	github.com/gin-contrib/cors v1.5.0
