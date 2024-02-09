@@ -13,7 +13,7 @@
     "@types/lodash": "^4.14.195",
     "@types/node": "^20.0.0",
     "nuxt": "^3.10.1",
-    "nuxt-primevue": "^0.2.0"
+    "nuxt-primevue": "^0.3.0"
   },
   "dependencies": {
     "defu": "^6.1.2",
