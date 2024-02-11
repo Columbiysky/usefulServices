@@ -11,14 +11,8 @@
     import { ref } from "vue";
     const items = ref([
         {
-            label: 'General',
+            label: 'Check currencies courses',
 
-        }, {
-            label: 'Crypto'
-        }, {
-            label: 'Stocks'
-        }, {
-            label: 'Airbag'
         },
     ]);
 </script>
