@@ -18,8 +18,8 @@ app.MapPost("/", ([FromBody] ServiceRequest req) =>
 {
     using (var scope = app.Services.CreateScope())
     {
-        var t = scope.ServiceProvider.GetRequiredService<InnerLogicService>();
-        t.Test();
+        var innerLogicInstance = scope.ServiceProvider.GetRequiredService<InnerLogicService>();
+        innerLogicInstance.GetInfo(req);
         return new { one = req.CurrOne, two = req.CurrTwo, tf = req.TimeFrame, provider = req.Provider };
     }
 });
@@ -58,12 +58,3 @@ app.Use(async (context, next) =>
 
 
 app.Run();
-
-
-public record ServiceRequest
-{
-    public required string CurrOne { get; set; }
-    public required string CurrTwo { get; set; }
-    public string? TimeFrame { get; set; }
-    public string? Provider { get; set; }
-}
