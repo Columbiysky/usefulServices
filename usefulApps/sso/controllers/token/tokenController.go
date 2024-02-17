@@ -35,6 +35,7 @@ func CheckToken(context *gin.Context) {
 		return
 	}
 	context.JSON(http.StatusOK, gin.H{"status": "exists"})
+	tokenLogic.RegisterActivity(tokenValue)
 }
 
 func RegisterActivity(context *gin.Context) {
