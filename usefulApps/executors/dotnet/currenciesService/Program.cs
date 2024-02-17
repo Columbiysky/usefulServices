@@ -1,3 +1,4 @@
+using InnerLogic;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Web.Http;
@@ -5,6 +6,7 @@ using System.Web.Http;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<InnerLogicService>();
 
 var app = builder.Build();
 
@@ -12,7 +14,15 @@ var app = builder.Build();
 
 //app.UseHttpsRedirection();
 
-app.MapPost("/", ([FromBody] ServiceRequest req) => new { one = req.CurrOne, two = req.CurrTwo, tf = req.TimeFrame, provider = req.Provider });
+app.MapPost("/", ([FromBody] ServiceRequest req) =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var t = scope.ServiceProvider.GetRequiredService<InnerLogicService>();
+        t.Test();
+        return new { one = req.CurrOne, two = req.CurrTwo, tf = req.TimeFrame, provider = req.Provider };
+    }
+});
 
 
 app.Use(async (context, next) =>

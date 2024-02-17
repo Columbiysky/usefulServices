@@ -19,3 +19,5 @@ usefulServices.code-workspace
 /usefulApps/executors/dotnet/currenciesService/.vs
 /usefulApps/executors/dotnet/currenciesService/bin
 /usefulApps/executors/dotnet/currenciesService/obj
+/usefulApps/executors/dotnet/InnerLogic/bin
+/usefulApps/executors/dotnet/InnerLogic/obj
