@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Headers;
+using System.Web.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ var app = builder.Build();
 
 //app.UseHttpsRedirection();
 
-app.MapGet("/", () => new { Test = "Test" });
+app.MapPost("/", ([FromBody] ServiceRequest req) => new { one = req.CurrOne, two = req.CurrTwo, tf = req.TimeFrame, provider = req.Provider });
 
 
 app.Use(async (context, next) =>
@@ -47,3 +48,12 @@ app.Use(async (context, next) =>
 
 
 app.Run();
+
+
+public record ServiceRequest
+{
+    public required string CurrOne { get; set; }
+    public required string CurrTwo { get; set; }
+    public string? TimeFrame { get; set; }
+    public string? Provider { get; set; }
+}
