@@ -3,7 +3,7 @@ module sso
 go 1.22.0
 
 require (
-	github.com/gin-contrib/cors v1.6.0
+	github.com/gin-contrib/cors v1.7.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-co-op/gocron/v2 v2.2.5
 	github.com/samber/lo v1.39.0
