@@ -18,23 +18,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.x'
-
-      # - name: Setup Golang caches
-      #   uses: actions/cache@v4
-      #   env:
-      #     working-directory: usefulApps/sso
-      #     cache-name: cache-go-sso-deps
-      #   with:
-      #     path: |
-      #       ~/.cache/go-build
-      #       ~/go/pkg/mod
-      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.sum') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-build-${{ env.cache-name }}-
-      #       ${{ runner.os }}-build-
-      #       ${{ runner.os }}-
-      
+                
       - name: Install dependencies
+        working-directory: usefulApps/tools/DbCreatorAndMigrator
         run: dotnet restore
       
       - name: Build
