@@ -16,3 +16,5 @@ __pycache__
 /usefulApps/backend/src/*.exe
 /usefulApps/backend/src/tmp/*.exe
 usefulServices.code-workspace
+/usefulApps/executors/dotnet/DbCreatorAndMigrator/.vs
+/usefulApps/executors/dotnet/DbCreatorAndMigrator/obj
