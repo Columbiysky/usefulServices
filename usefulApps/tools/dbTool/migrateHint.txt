@@ -1,2 +1,0 @@
-migrate create -ext "sql" -dir "." %NAME OF THE MIGRATION%
-migrate -database "postgresql://postgres:0o9i*U&Y@cbsky.ru:5432/%DBNAME%?sslmode=disable" -path . up / down
