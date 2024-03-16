@@ -17,3 +17,5 @@ __pycache__
 /usefulApps/backend/src/tmp/*.exe
 usefulServices.code-workspace
 /usefulApps/tools/DbCreatorAndMigrator/.vs
+/usefulApps/tools/DbCreatorAndMigrator/obj
+/usefulApps/tools/DbCreatorAndMigrator/bin
