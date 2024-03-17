@@ -1,0 +1,26 @@
+name: Node.js DOCKER build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build frontend docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./usefulApps/frontend
+          file: ./usefulApps/frontend/Dockerfile
+          push: false
+          tags: frontend:latest
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
