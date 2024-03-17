@@ -5,6 +5,10 @@ namespace DbCreatorAndMigrator
 {
     public class UsefulServicesContext : DbContext
     {
+        public UsefulServicesContext()
+        {
+        }
+
         public UsefulServicesContext(DbContextOptions<UsefulServicesContext> options) : base(options)
         {
         }
