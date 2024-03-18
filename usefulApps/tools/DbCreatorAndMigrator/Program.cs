@@ -30,12 +30,12 @@ namespace DbCreatorAndMigrator
                 Console.WriteLine(string.Empty);
 
                 Console.WriteLine("Fillin' buiiltin started...");
-                FillBuiltInData();
+                FillBuiltInData(context);
                 Console.WriteLine("Fillin' buiiltin completed!");
             }
         }
 
-        static private void FillBuiltInData()
+        static private void FillBuiltInData(UsefulServicesContext context)
         {
             Services.Scan(s => s.FromAssemblyOf<Program>()
                 .AddClasses(c => c.AssignableTo(typeof(IBuiltInDataFillerBase)))
@@ -45,7 +45,7 @@ namespace DbCreatorAndMigrator
             var serviceProvider = Services.BuildServiceProvider();
             using var scope = serviceProvider.CreateScope();
             var endpoints = scope.ServiceProvider.GetServices<IBuiltInDataFillerBase>().ToList();
-            endpoints.ForEach(e => e.Fill());
+            endpoints.ForEach(e => e.Fill(context));
         }
 
         private static ServiceCollection InitServices()

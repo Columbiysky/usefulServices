@@ -2,6 +2,6 @@
 {
     public interface IBuiltInDataFillerBase
     {
-        public abstract void Fill();
+        public abstract void Fill(UsefulServicesContext ops);
     }
 }
