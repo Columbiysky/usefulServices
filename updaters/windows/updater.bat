@@ -4,6 +4,11 @@ go get .
 go mod tidy
 
 cd ..\..
+cd sso
+go get .
+go mod tidy
+
+cd ..
 cd executors\python
 pip install -r .\requirements.txt -U
 
