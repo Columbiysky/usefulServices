@@ -19,3 +19,4 @@ usefulServices.code-workspace
 /usefulApps/tools/DbCreatorAndMigrator/.vs
 /usefulApps/tools/DbCreatorAndMigrator/obj
 /usefulApps/tools/DbCreatorAndMigrator/bin
+.idea
