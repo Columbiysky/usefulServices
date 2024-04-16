@@ -20,7 +20,7 @@ numpy==1.26.4
 ordered-set==4.1.0
 pillow==10.3.0
 proglog==0.1.10
-pydantic_core==2.16.3
+pydantic_core==2.18.1
 pydantic==2.6.4
 python-dotenv==1.0.1
 python-multipart==0.0.9
