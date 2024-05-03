@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths: 
       - "./jsDockerBuild.yml"
-      - "/usefulApps/frontend"
+      - "/usefulApps/frontend/**"
   pull_request:
     branches: ["main"]
     paths: 
       - "./jsDockerBuild.yml"
-      - "/usefulApps/frontend"
+      - "/usefulApps/frontend/**"
 
 jobs:
   build:

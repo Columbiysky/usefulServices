@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths: 
       - "./pythonExecutorsTests.yml"
-      - "/usefulApps/executors/python"
+      - "/usefulApps/executors/python/**"
   pull_request:
     branches: ["main"]
     paths: 
       - "./pythonExecutorsTests.yml"
-      - "/usefulApps/executors/python"
+      - "/usefulApps/executors/python/**"
 
 jobs:
   test:

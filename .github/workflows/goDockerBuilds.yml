@@ -5,14 +5,14 @@ on:
     branches: ["main"]
     paths: 
       - "./goDockerBuilds.yml"
-      - "/usefulApps/backend"
-      - "/usefulApps/sso"
+      - "/usefulApps/backend/**"
+      - "/usefulApps/sso/**"
   pull_request:
     branches: ["main"]
     paths: 
       - "./goDockerBuilds.yml"
-      - "/usefulApps/backend"
-      - "/usefulApps/sso"
+      - "/usefulApps/backend/**"
+      - "/usefulApps/sso/**"
 
 jobs:
   build-backend-docker-image:

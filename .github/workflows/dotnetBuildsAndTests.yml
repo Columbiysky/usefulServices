@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths: 
       - "./dotnetBuildsAndTests.yml"
-      - "/usefulApps/tools/DbCreatorAndMigrator"
+      - "/usefulApps/tools/DbCreatorAndMigrator/**"
   pull_request:
     branches: ["main"]
     paths: 
       - "./dotnetBuildsAndTests.yml"
-      - "/usefulApps/tools/DbCreatorAndMigrator"
+      - "/usefulApps/tools/DbCreatorAndMigrator/**"
 
 jobs:
   build-dbCreatorAndMigrator:
