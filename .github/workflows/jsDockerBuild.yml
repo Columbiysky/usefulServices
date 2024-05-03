@@ -4,13 +4,13 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - "./jsDockerBuild.yml"
-      - "/usefulApps/frontend/**"
+      - './jsDockerBuild.yml'
+      - 'usefulApps/frontend/**'
   pull_request:
     branches: ["main"]
     paths: 
-      - "./jsDockerBuild.yml"
-      - "/usefulApps/frontend/**"
+      - './jsDockerBuild.yml'
+      - 'usefulApps/frontend/**'
 
 jobs:
   build:

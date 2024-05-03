@@ -4,15 +4,15 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - "./goBackendBuildAndTest.yml"
-      - "/usefulApps/backend/**"
-      - "/usefulApps/sso/**"
+      - './goBackendBuildAndTest.yml'
+      - 'usefulApps/backend/**'
+      - 'usefulApps/sso/**'
   pull_request:
     branches: ["main"]
     paths: 
-      - "./goBackendBuildAndTest.yml"
-      - "/usefulApps/backend/**"
-      - "/usefulApps/sso/**"
+      - './goBackendBuildAndTest.yml'
+      - 'usefulApps/backend/**'
+      - 'usefulApps/sso/**'
 
 jobs:
   build-sso:

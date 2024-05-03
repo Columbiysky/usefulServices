@@ -4,13 +4,13 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - "./dotnetBuildsAndTests.yml"
-      - "/usefulApps/tools/DbCreatorAndMigrator/**"
+      - './dotnetBuildsAndTests.yml'
+      - 'usefulApps/tools/DbCreatorAndMigrator/**'
   pull_request:
     branches: ["main"]
     paths: 
-      - "./dotnetBuildsAndTests.yml"
-      - "/usefulApps/tools/DbCreatorAndMigrator/**"
+      - './dotnetBuildsAndTests.yml'
+      - 'usefulApps/tools/DbCreatorAndMigrator/**'
 
 jobs:
   build-dbCreatorAndMigrator:

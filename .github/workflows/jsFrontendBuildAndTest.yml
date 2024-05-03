@@ -4,13 +4,13 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - "./jsFrontendBuildAndTest.yml"
-      - "/usefulApps/frontend/**"
+      - './jsFrontendBuildAndTest.yml'
+      - '/usefulApps/frontend/**'
   pull_request:
     branches: ["main"]
     paths: 
-      - "./jsFrontendBuildAndTest.yml"
-      - "/usefulApps/frontend/**"
+      - './jsFrontendBuildAndTest.yml'
+      - '/usefulApps/frontend/**'
 
 jobs:
   build:
