@@ -8,6 +8,9 @@ on:
       - "/usefulApps/executors/python"
   pull_request:
     branches: ["main"]
+    paths: 
+      - "./pythonExecutorsTests.yml"
+      - "/usefulApps/executors/python"
 
 jobs:
   test:
