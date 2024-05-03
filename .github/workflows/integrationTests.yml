@@ -7,8 +7,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: integration
-          POSTGRES_PASSWORD: pass
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: 0o9i*U&Y
         ports:
           - 5432:5432
         options: >-
