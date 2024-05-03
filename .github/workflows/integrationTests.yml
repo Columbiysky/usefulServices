@@ -37,5 +37,5 @@ jobs:
         run: dotnet publish -r linux-x64 --self-contained
 
       - name: Run creator and migrator
-        run: |
-            ls
+        working-directory: usefulApps/tools/DbCreatorAndMigrator
+        run: /bin/Release/net8.0/linux-x64/publish/DbCreatorAndMigrator
