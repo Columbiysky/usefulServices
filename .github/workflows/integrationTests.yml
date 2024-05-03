@@ -4,7 +4,7 @@ on:
 jobs:
   integration:
     services:
-      postgres10:
+      postgres:
         image: postgres:latest
         env:
           POSTGRES_DB: integration
@@ -34,7 +34,7 @@ jobs:
       
       - name: Build
         working-directory: usefulApps/tools/DbCreatorAndMigrator
-        run: dotnet build
+        run: dotnet publish -r linux-x64 --self-contained
 
       - name: Run creator and migrator
         run: |
