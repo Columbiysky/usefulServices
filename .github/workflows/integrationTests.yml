@@ -1,0 +1,32 @@
+name: Integration Test
+on:
+  push:
+    branches: ["main"]
+    
+jobs:
+  integration:
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: 0o9i*U&Y
+        ports:
+          - 5432:5432
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: "Columbiysky/usefulServices"
+
+      - name: Set up dontet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+      
+      - name: Run creator and migrator
+        working-directory: usefulApps/tools/DbCreatorAndMigrator
+        run: |
+          dotnet publish -r linux-x64 --self-contained
+          ./bin/Release/net8.0/linux-x64/publish/DbCreatorAndMigrator
