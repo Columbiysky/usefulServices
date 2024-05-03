@@ -3,8 +3,14 @@ name: Node.js DOCKER build
 on:
   push:
     branches: ["main"]
+    paths: 
+      - "./jsDockerBuild.yml"
+      - "/usefulApps/frontend"
   pull_request:
     branches: ["main"]
+    paths: 
+      - "./jsDockerBuild.yml"
+      - "/usefulApps/frontend"
 
 jobs:
   build:
