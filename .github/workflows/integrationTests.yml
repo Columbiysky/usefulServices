@@ -11,11 +11,6 @@ jobs:
           POSTGRES_PASSWORD: 0o9i*U&Y
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     runs-on: ubuntu-latest
     steps:
@@ -27,15 +22,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
-                
-      - name: Install dependencies
-        working-directory: usefulApps/tools/DbCreatorAndMigrator
-        run: dotnet restore
       
-      - name: Build
-        working-directory: usefulApps/tools/DbCreatorAndMigrator
-        run: dotnet publish -r linux-x64 --self-contained
-
       - name: Run creator and migrator
         working-directory: usefulApps/tools/DbCreatorAndMigrator
-        run: ./bin/Release/net8.0/linux-x64/publish/DbCreatorAndMigrator
+        run: |
+          dotnet publish -r linux-x64 --self-contained
+          ./bin/Release/net8.0/linux-x64/publish/DbCreatorAndMigrator
