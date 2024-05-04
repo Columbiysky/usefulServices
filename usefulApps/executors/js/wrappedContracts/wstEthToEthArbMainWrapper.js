@@ -1,4 +1,5 @@
-const { ethers } = require("ethers")
+import { ethers } from "ethers";
+
 const provider = new ethers.JsonRpcProvider("https://arbitrum-one-rpc.publicnode.com")
 const aggregatorV3InterfaceABI = [
     {
@@ -550,13 +551,15 @@ const aggregatorV3InterfaceABI = [
 
 const addr = "0xb523AE262D20A936BC152e6023996e46FDC2A95D"
 const priceFeed = new ethers.Contract(addr, aggregatorV3InterfaceABI, provider)
-priceFeed.latestRoundData().then((roundData) => {
-    let res = convertToHumanReadable(roundData[1]);
-    console.log("PRICE = ", res);
-})
 
 function convertToHumanReadable(response) {
     let res = ethers.formatEther(response);
     res = Math.round(res * 1e4) / 1e4;
+    return res;
+}
+
+export async function get() {
+    let preRes = await priceFeed.latestRoundData();
+    let res = convertToHumanReadable(preRes[1]);
     return res;
 }
