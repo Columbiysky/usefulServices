@@ -1,3 +1,4 @@
-import { get } from "./wrappedContracts/wstEthToEthArbMainWrapper.js";
+import { WstEthToEthArbMainWrapper } from "./wrappedContracts/wstEthToEthArbMainWrapper.js";
 
-get().then((res) => console.log(res));
+const t = new WstEthToEthArbMainWrapper();
+t.get().then((res) => console.log(res));
