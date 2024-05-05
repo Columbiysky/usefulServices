@@ -1,11 +1,32 @@
 import { ethers } from "ethers";
 import { IBaseWrapper } from "./baseWrapper";
 
-export class WstEthToEthArbMainWrapper implements IBaseWrapper {
-    constructor() { }
+export default class WstEthToEthArbMainWrapper implements IBaseWrapper {
+    constructor(
+        provider: string,
+        contractAddress: string,
+    ) {
+        this.provider = new ethers.JsonRpcProvider(provider);
+        this.contractAddress = contractAddress;
+    }
 
-    private provider = new ethers.JsonRpcProvider("https://arbitrum-one-rpc.publicnode.com")
-    private aggregatorV3InterfaceABI = [
+    provider: ethers.JsonRpcProvider;
+    contractAddress: string;
+
+    async get() {
+        const contract = new ethers.Contract(this.contractAddress, this.abi, this.provider);
+        let preRes = await contract.latestRoundData();
+        let res = this.convertToHumanReadable(preRes[1] as string);
+        return res;
+    }
+
+    private convertToHumanReadable(response: string) {
+        const respAsNumber = Number(ethers.formatEther(response));
+        let result = Math.round(respAsNumber * 1e4) / 1e4; // rounding to x.1234
+        return result;
+    }
+
+    private abi = [
         {
             "inputs": [
                 {
@@ -552,19 +573,4 @@ export class WstEthToEthArbMainWrapper implements IBaseWrapper {
             "type": "function"
         }
     ]
-
-    private addr = "0xb523AE262D20A936BC152e6023996e46FDC2A95D"
-    private priceFeed = new ethers.Contract(this.addr, this.aggregatorV3InterfaceABI, this.provider)
-
-    private convertToHumanReadable(response: string) {
-        const respAsNumber = Number(ethers.formatEther(response));
-        let result = Math.round(respAsNumber * 1e4) / 1e4; // rounding to x.1234
-        return result;
-    }
-
-    async get() {
-        let preRes = await this.priceFeed.latestRoundData();
-        let res = this.convertToHumanReadable(preRes[1] as string);
-        return res;
-    }
 }
