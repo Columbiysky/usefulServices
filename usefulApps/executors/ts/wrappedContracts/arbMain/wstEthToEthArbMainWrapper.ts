@@ -1,17 +1,13 @@
 import { ethers } from "ethers";
-import { IBaseWrapper } from "./baseWrapper";
+import { IBaseWrapper } from "../baseWrapper";
 
 export default class WstEthToEthArbMainWrapper implements IBaseWrapper {
-    constructor(
-        provider: string,
-        contractAddress: string,
-    ) {
+    constructor(provider: string) {
         this.provider = new ethers.JsonRpcProvider(provider);
-        this.contractAddress = contractAddress;
     }
 
     provider: ethers.JsonRpcProvider;
-    contractAddress: string;
+    contractAddress: string = "0xb523AE262D20A936BC152e6023996e46FDC2A95D";
 
     async get() {
         const contract = new ethers.Contract(this.contractAddress, this.abi, this.provider);

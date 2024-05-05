@@ -1,6 +1,6 @@
 import fs from "fs";
-import WstEthToEthArbMainWrapper from "./wrappedContracts/wstEthToEthArbMainWrapper";
+import WstEthToEthArbMainWrapper from "./wrappedContracts/arbMain/wstEthToEthArbMainWrapper";
 
-const tConfig = JSON.parse(fs.readFileSync('./configs/wstEthToEthArbMain/config.json', 'utf8'));
-const t = new WstEthToEthArbMainWrapper(tConfig.provider, tConfig.contractAddress);
-t.get().then((res) => console.log(res));
+const arbMainRpcLink = JSON.parse(fs.readFileSync('./configs/arbMainRpcLink.json', 'utf8'));
+const wstEthToEthArbMainWrapper = new WstEthToEthArbMainWrapper(arbMainRpcLink.provider);
+wstEthToEthArbMainWrapper.get().then((res) => console.log(res));
