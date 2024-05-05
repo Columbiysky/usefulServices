@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "ethers": "^6.12.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "tsx": "^4.9.1"
+  }
+}
