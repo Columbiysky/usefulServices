@@ -11,7 +11,6 @@ namespace DbCreatorAndMigrator
 
         static void Main(string[] args)
         {
-
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("config.json");
