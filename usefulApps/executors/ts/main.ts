@@ -1,5 +1,5 @@
 import fs from "fs";
-import WstEthToEthArbMainWrapper from "./wrappedContracts/arbMain/wstEthToEthArbMainWrapper";
+import WstEthToEthArbMainWrapper from "./wrappedContracts/arbMain/wstEthToEthWrapper";
 
 const arbMainRpcLink = JSON.parse(fs.readFileSync('./configs/arbMainRpcLink.json', 'utf8'));
 const wstEthToEthArbMainWrapper = new WstEthToEthArbMainWrapper(arbMainRpcLink.provider);
