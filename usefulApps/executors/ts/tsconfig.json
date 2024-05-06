@@ -2,6 +2,8 @@
     "compilerOptions": {
         "forceConsistentCasingInFileNames": true,
         "esModuleInterop": true,
-        "strict": true
+        "strict": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     }
 }
