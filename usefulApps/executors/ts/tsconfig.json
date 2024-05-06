@@ -4,6 +4,7 @@
         "esModuleInterop": true,
         "strict": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
     }
 }

@@ -5,7 +5,7 @@ export default class WstEthToEthArbMainWrapper implements IBaseWrapper {
     constructor(provider: string) {
         this.provider = new ethers.JsonRpcProvider(provider);
     }
-
+    pairName: string = "wstETH/ETH";
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0xb523AE262D20A936BC152e6023996e46FDC2A95D";
 

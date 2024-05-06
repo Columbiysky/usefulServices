@@ -6,6 +6,7 @@ export default class EzEthToEthArbMainWrapper implements IBaseWrapper {
         this.provider = new ethers.JsonRpcProvider(provider);
     }
 
+    pairName: string = "ezETH/ETH";
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0x11E1836bFF2ce9d6A5bec9cA79dc998210f3886d";
 
