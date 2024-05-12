@@ -9,11 +9,15 @@ go get .
 go mod tidy
 
 cd ..
-cd executors\python
+cd services\python
 pip install -r .\requirements.txt -U
 
 cd ..\..
 cd frontend
+npm i
+
+cd ..\..
+cd services\ts
 npm i
 
 cd ..\..
