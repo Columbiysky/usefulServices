@@ -1,12 +1,13 @@
 import { ethers } from "ethers";
 import { IBaseWrapper } from "../baseWrapper";
+import {PairsEnum} from "../../../core/pairsEnum";
 
 export default class EzEthToEthArbMainWrapper implements IBaseWrapper {
     constructor(provider: string) {
         this.provider = new ethers.JsonRpcProvider(provider);
     }
 
-    pairName: string = "ezETH/ETH";
+    pairName: string = PairsEnum.ezETHETH;
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0x11E1836bFF2ce9d6A5bec9cA79dc998210f3886d";
 

@@ -1,11 +1,12 @@
 import { ethers } from "ethers";
 import { IBaseWrapper } from "../baseWrapper";
+import {PairsEnum} from "../../../core/pairsEnum";
 
 export default class WstEthToEthArbMainWrapper implements IBaseWrapper {
     constructor(provider: string) {
         this.provider = new ethers.JsonRpcProvider(provider);
     }
-    pairName: string = "wstETH/ETH";
+    pairName: string = PairsEnum.wstETHETH;
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0xb523AE262D20A936BC152e6023996e46FDC2A95D";
 
