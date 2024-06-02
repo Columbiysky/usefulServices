@@ -6,7 +6,8 @@ export class AppController {
   constructor(private readonly appService: AppService) { }
 
   @Get(":pairName")
-  getHello(@Query() pairName): string {
-    return this.appService.getHello(pairName);
+  getPairData(@Query() req): string {
+    const pairData = this.appService.getPairData(req.pairName);
+    return pairData;
   }
 }

@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import {PairDataLogic} from "./innerLogic/pairDataLogic";
 
 @Injectable()
 export class AppService {
-  getHello(param: string): string {
+  getPairData(param: string): string {
+    const pdl  = new PairDataLogic();
+    pdl.getDataFromContracts()
     return "Hello " + param;
   }
 }
