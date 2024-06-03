@@ -1,0 +1,33 @@
+name: Nest.js build and test
+
+on:
+  push:
+    branches: ["main"]
+    paths: 
+      - './jsFrontendBuildAndTest.yml'
+      - 'usefulApps/services/ts/webApiForChainlink/**'
+  pull_request:
+    branches: ["main"]
+    paths: 
+      - './jsFrontendBuildAndTest.yml'
+      - 'usefulApps/services/ts/webApiForChainlink/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: "Columbiysky/usefulServices"
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+      - name: Install dependencies
+        working-directory: usefulApps/services/ts/webApiForChainlink
+        run: npm ci
+      - name: Build
+        working-directory: usefulApps/services/ts/webApiForChainlink
+        run: npm run build
