@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: "22.x"
       - name: Install dependencies
-        working-directory: usefulApps/services/ts/webApiForChainlink
+        working-directory: usefulApps/services/ts/webApiForChainlink/web-api-chainlink
         run: npm i
       - name: Build
-        working-directory: usefulApps/services/ts/webApiForChainlink
+        working-directory: usefulApps/services/ts/webApiForChainlink/web-api-chainlink
         run: npm run build
