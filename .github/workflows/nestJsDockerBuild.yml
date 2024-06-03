@@ -24,7 +24,7 @@ jobs:
       - name: Build frontend docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./usefulApps/services/ts/webApiForChainlink
-          file: ./usefulApps/services/ts/webApiForChainlink/Dockerfile
+          context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
+          file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
           push: false
           tags: web-api-for-chainlink:latest
