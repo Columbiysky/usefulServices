@@ -27,4 +27,4 @@ jobs:
           context: ./usefulApps/services/ts/webApiForChainlink
           file: ./usefulApps/services/ts/webApiForChainlink/Dockerfile
           push: false
-          tags: webApiForChainlink:latest
+          tags: web-api-for-chainlink:latest
