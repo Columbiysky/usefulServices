@@ -1,4 +1,5 @@
-﻿using DbCreatorAndMigrator.Models.Sso;
+﻿using DbCreatorAndMigrator.Models.Finance;
+using DbCreatorAndMigrator.Models.Sso;
 using Microsoft.EntityFrameworkCore;
 
 namespace DbCreatorAndMigrator
@@ -14,6 +15,7 @@ namespace DbCreatorAndMigrator
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Token> Tokens { get; set; }
         public virtual DbSet<AccountToken> AccountsTokens { get; set; }
+        public virtual DbSet<Pair> Pair { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +24,8 @@ namespace DbCreatorAndMigrator
             modelBuilder.Entity<AccountToken>().ToTable(nameof(AccountsTokens), "sso");
             modelBuilder.Entity<AccountToken>().HasOne(a => a.Account).WithMany();
             modelBuilder.Entity<AccountToken>().HasOne(a => a.Token).WithMany();
+
+            modelBuilder.Entity<Pair>().ToTable(nameof(Pair), "finance");
         }
     }
 }
