@@ -1,13 +1,13 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Query } from "@nestjs/common";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appService: AppService) {}
 
   @Get(":pairName")
-  getPairData(@Query() req): string {
-    const pairData = this.appService.getPairData(req.pairName);
-    return pairData;
+  async getPairData(@Query() req) {
+    const res = await this.appService.getPairData(req.pairName);
+    return res;
   }
 }

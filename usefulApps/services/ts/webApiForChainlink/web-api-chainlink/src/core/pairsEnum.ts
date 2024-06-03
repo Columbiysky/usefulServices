@@ -1,4 +1,4 @@
-export enum PairsEnum{
-    wstETHETH = "wstETH/ETH",
-    ezETHETH = "ezETH/ETH",
+export enum PairsEnum {
+  wstETHETH = "wstETH/ETH",
+  ezETHETH = "ezETH/ETH",
 }
