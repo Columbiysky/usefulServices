@@ -4,12 +4,12 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - './jsFrontendBuildAndTest.yml'
+      - './nestJsBuildAndTest.yml'
       - 'usefulApps/services/ts/webApiForChainlink/**'
   pull_request:
     branches: ["main"]
     paths: 
-      - './jsFrontendBuildAndTest.yml'
+      - './nestJsBuildAndTest.yml'
       - 'usefulApps/services/ts/webApiForChainlink/**'
 
 jobs:
