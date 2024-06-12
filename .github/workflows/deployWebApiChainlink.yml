@@ -26,4 +26,4 @@ jobs:
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=- . > web-api-for-chainlink.tar
       - name: Save image
-        run: docker images
+        run: ls
