@@ -25,13 +25,8 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=web-api-for-chainlink.tar
-      - name: set file permissions
-        run: chmod 777 web-api-for-chainlink.tar
-      - name: deploy
-        uses: appleboy/scp-action@v0.1.7
-        with: 
-          host: ${{secrets.SERVER_IP}}
-          username: ${{secrets.SERVER_LOGIN}}
-          key: ${{secrets.SERVER_KEY}}
-          source: "web-api-for-chainlink.tar"
-          target: /dockerImages
+      - name: save as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-api-for-chainlink
+          path: web-api-for-chainlink.tar
