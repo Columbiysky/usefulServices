@@ -35,4 +35,14 @@ jobs:
           overwrite: true
       - name: Output artifact URL
         run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
+      - name: Deploy
+        uses: D3rHase/ssh-command-action@v0.2.2
+        with: 
+          host: ${{secrets.SERVER_IP}}
+          user: ${{secrets.SERVER_LOGIN}}
+          private_key: ${{secrets.SERVER_KEY}}
+          command: |
+            cd dockerImages
+            rm -rf
+            wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
         
