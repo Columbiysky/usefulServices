@@ -30,7 +30,7 @@ jobs:
           file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/columbiysky/web-api-for-chainlink:latest
+          tags: ghcr.io/Columbiysky/web-api-for-chainlink:latest
       # - name: Build frontend docker image
       #   uses: docker/build-push-action@v5
       #   with:
