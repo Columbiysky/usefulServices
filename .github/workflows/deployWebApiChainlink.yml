@@ -25,7 +25,7 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=web-api-for-chainlink.tar
-      - name: Save image
-        run: |
-          apt-get install sshpass
-          sshpass -p ${{secrets.SERVER_PASSWORD}} scp  web-api-for-chainlink.tar ${{secrets.SERVER_LOGIN}}@94.26.248.117
+      - name: install sshpass
+        run: apt-get install sshpass
+      - name: try to push
+        run: sshpass -p ${{secrets.SERVER_PASSWORD}} scp  web-api-for-chainlink.tar ${{secrets.SERVER_LOGIN}}@94.26.248.117
