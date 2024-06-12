@@ -25,4 +25,4 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
       - name: Save image
-        run: docker save web-api-for-chainlink:latest > web-api-for-chainlink.tar
+        run: docker images
