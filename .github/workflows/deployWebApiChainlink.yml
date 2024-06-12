@@ -25,6 +25,8 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=web-api-for-chainlink.tar
+      - name: set file permissions
+        run: chmod 777 web-api-for-chainlink.tar
       - name: deploy
         uses: appleboy/scp-action@v0.1.7
         with: 
