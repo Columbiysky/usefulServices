@@ -24,5 +24,6 @@ jobs:
           file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
           push: false
           tags: web-api-for-chainlink:latest
+          outputs: type=local,dest=- . > web-api-for-chainlink.tar
       - name: Save image
         run: docker images
