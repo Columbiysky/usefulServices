@@ -25,12 +25,8 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=web-api-for-chainlink.tar
-      # - name: save as artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: web-api-for-chainlink
-      #     path: ./web-api-for-chainlink.tar
-      - name: asdf
-        run: |
-          pwd
-          ls -la
+      - name: save as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-api-for-chainlink
+          path: ./web-api-for-chainlink.tar
