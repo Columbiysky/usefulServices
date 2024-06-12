@@ -28,4 +28,4 @@ jobs:
       - name: install sshpass
         run: sudo apt-get install sshpass
       - name: try to push
-        run: sshpass -p ${{secrets.SERVER_PASSWORD}} scp ./web-api-for-chainlink.tar ${{secrets.SERVER_LOGIN}}@${{secrets.SERVER_IP}}
+        run: sshpass -p ${{secrets.SERVER_PASSWORD}} scp ./web-api-for-chainlink.tar ${{secrets.SERVER_LOGIN}}@${{secrets.SERVER_IP}}/dockerImages
