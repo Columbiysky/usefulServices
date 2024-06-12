@@ -25,9 +25,11 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=local,dest=web-api-for-chainlink.tar
-      - name: install sshpass
-        run: sudo apt-get install sshpass
-      - name: ls
-        run: sshpass -p zDnNgX0c ssh githubcd@94.26.248.11 'ls -la'
-      # - name: try to push
-      #   run: sshpass -p zDnNgX0c scp -r ./web-api-for-chainlink.tar githubcd@94.26.248.117/./dockerImages
+      - name: deploy
+        uses: appleboy/scp-action@v0.1.7
+        with: 
+          host: ${{secrets.SERVER_IP}}
+          username: ${{secrets.SERVER_LOGIN}}
+          key: ${{secrets.SERVER_KEY}}
+          source: "web-api-for-chainlink.tar"
+          target: /dockerImages
