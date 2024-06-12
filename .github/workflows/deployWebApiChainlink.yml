@@ -28,4 +28,4 @@ jobs:
       - name: install sshpass
         run: sudo apt-get install sshpass
       - name: try to push
-        run: sshpass -p zDnNgX0c scp -r ./web-api-for-chainlink.tar githubcd@94.26.248.117/dockerImages
+        run: sshpass -p zDnNgX0c scp -r ./web-api-for-chainlink.tar githubcd@94.26.248.117/home/githubcd/dockerImages
