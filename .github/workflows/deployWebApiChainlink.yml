@@ -31,33 +31,4 @@ jobs:
           tags: | 
             ghcr.io/columbiysky/web-api-for-chainlink:latest
           outputs: type=image,name=web-api-for-chainlink
-      # - name: Build frontend docker image
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
-      #     file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
-      #     push: false
-      #     tags: web-api-for-chainlink:latest
-      #     outputs: type=docker,dest=/tmp/web-api-for-chainlink.tar
-      # - name: Save as artifact
-      #   uses: actions/upload-artifact@v4
-      #   id: artifact-upload-step
-      #   with:
-      #     name: web-api-for-chainlink
-      #     path: /tmp/web-api-for-chainlink.tar
-      #     compression-level: 0
-      #     overwrite: true
-      # - name: Output artifact URL
-      #   run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
-      # - name: Deploy
-      #   uses: D3rHase/ssh-command-action@v0.2.2
-      #   with: 
-      #     host: ${{secrets.SERVER_IP}}
-      #     user: ${{secrets.SERVER_LOGIN}}
-      #     private_key: ${{secrets.SERVER_KEY}}
-      #     command: |
-      #       cd dockerImages
-      #       rm -rf
-      #       curl -L -H "Accept: application/vnd.github+json" -H "Authorization: ${{secrets.GITHUB_TOKEN}}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/Columbiysky/usefulServices/actions/artifacts/1595353052/zip --output t.zip
-      #       wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
         
