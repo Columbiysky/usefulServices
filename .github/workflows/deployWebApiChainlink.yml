@@ -30,3 +30,5 @@ jobs:
         with:
           name: web-api-for-chainlink
           path: ./web-api-for-chainlink.tar
+          compression-level: 0
+          overwrite: true
