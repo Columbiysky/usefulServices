@@ -24,11 +24,11 @@ jobs:
           file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
           push: false
           tags: web-api-for-chainlink:latest
-          outputs: type=local,dest=web-api-for-chainlink.tar
+          outputs: type=local,dest=/tmp/web-api-for-chainlink.tar
       - name: save as artifact
         uses: actions/upload-artifact@v4
         with:
           name: web-api-for-chainlink
-          path: ./web-api-for-chainlink.tar
+          path: /tmp/web-api-for-chainlink.tar
           compression-level: 0
           overwrite: true
