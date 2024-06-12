@@ -25,10 +25,14 @@ jobs:
           push: false
           tags: web-api-for-chainlink:latest
           outputs: type=docker,dest=/tmp/web-api-for-chainlink.tar
-      - name: save as artifact
+      - name: Save as artifact
         uses: actions/upload-artifact@v4
+        id: artifact-upload-step
         with:
           name: web-api-for-chainlink
           path: /tmp/web-api-for-chainlink.tar
           compression-level: 0
           overwrite: true
+      - name: Output artifact URL
+        run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
+        
