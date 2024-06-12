@@ -17,32 +17,48 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build frontend docker image
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
           file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
-          push: false
-          tags: web-api-for-chainlink:latest
-          outputs: type=docker,dest=/tmp/web-api-for-chainlink.tar
-      - name: Save as artifact
-        uses: actions/upload-artifact@v4
-        id: artifact-upload-step
-        with:
-          name: web-api-for-chainlink
-          path: /tmp/web-api-for-chainlink.tar
-          compression-level: 0
-          overwrite: true
-      - name: Output artifact URL
-        run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
-      - name: Deploy
-        uses: D3rHase/ssh-command-action@v0.2.2
-        with: 
-          host: ${{secrets.SERVER_IP}}
-          user: ${{secrets.SERVER_LOGIN}}
-          private_key: ${{secrets.SERVER_KEY}}
-          command: |
-            cd dockerImages
-            rm -rf
-            wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            columbiysky/web-api-for-chainlink:latest
+            ghcr.io/columbiysky/web-api-for-chainlink:latest
+      # - name: Build frontend docker image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
+      #     file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
+      #     push: false
+      #     tags: web-api-for-chainlink:latest
+      #     outputs: type=docker,dest=/tmp/web-api-for-chainlink.tar
+      # - name: Save as artifact
+      #   uses: actions/upload-artifact@v4
+      #   id: artifact-upload-step
+      #   with:
+      #     name: web-api-for-chainlink
+      #     path: /tmp/web-api-for-chainlink.tar
+      #     compression-level: 0
+      #     overwrite: true
+      # - name: Output artifact URL
+      #   run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
+      # - name: Deploy
+      #   uses: D3rHase/ssh-command-action@v0.2.2
+      #   with: 
+      #     host: ${{secrets.SERVER_IP}}
+      #     user: ${{secrets.SERVER_LOGIN}}
+      #     private_key: ${{secrets.SERVER_KEY}}
+      #     command: |
+      #       cd dockerImages
+      #       rm -rf
+      #       wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
         
