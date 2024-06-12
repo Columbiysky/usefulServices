@@ -24,7 +24,7 @@ jobs:
           file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
           push: false
           tags: web-api-for-chainlink:latest
-          outputs: type=local,dest=/tmp/web-api-for-chainlink.tar
+          outputs: type=docker,dest=/tmp/web-api-for-chainlink.tar
       - name: save as artifact
         uses: actions/upload-artifact@v4
         with:
