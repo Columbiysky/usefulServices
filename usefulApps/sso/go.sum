@@ -28,6 +28,8 @@ github.com/go-co-op/gocron/v2 v2.6.0 h1:aSka6+B8i/pnFGlJvdZmoK8Tx/kbe7EWFN3gbNmY
 github.com/go-co-op/gocron/v2 v2.6.0/go.mod h1:ckPQw96ZuZLRUGu88vVpd9a6d9HakI14KWahFZtGvNw=
 github.com/go-co-op/gocron/v2 v2.7.0 h1:dFwVZx+M+7p3brj5JPrqmvmlt/X45DiQi6lFZ0xLIQc=
 github.com/go-co-op/gocron/v2 v2.7.0/go.mod h1:ckPQw96ZuZLRUGu88vVpd9a6d9HakI14KWahFZtGvNw=
+github.com/go-co-op/gocron/v2 v2.7.1 h1:HNHT5WERT4LVzMIqcaQIVrMpNpL6ROK8DiSnATLDxb4=
+github.com/go-co-op/gocron/v2 v2.7.1/go.mod h1:xY7bJxGazKam1cz04EebrlP4S9q4iWdiAylMGP3jY9w=
 github.com/go-playground/assert/v2 v2.2.0 h1:JvknZsQTYeFEAhQwI4qEt9cyV5ONwRHC+lYKSsYSR8s=
 github.com/go-playground/assert/v2 v2.2.0/go.mod h1:VDjEfimB/XKnb+ZQfWdccd7VUvScMdVu0Titje2rxJ4=
 github.com/go-playground/locales v0.14.1 h1:EWaQ/wswjilfKLTECiXz7Rh+3BjFhfDFKv/oXslEjJA=
@@ -142,6 +144,8 @@ golang.org/x/crypto v0.23.0 h1:dIJU/v2J8Mdglj/8rJ6UUOM3Zc9zLZxVZwwxMooUSAI=
 golang.org/x/crypto v0.23.0/go.mod h1:CKFgDieR+mRhux2Lsu27y0fO304Db0wZe70UKqHu0v8=
 golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f h1:99ci1mjWVBWwJiEKYY6jWa4d2nTQVIEhZIptnrVb1XY=
 golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f/go.mod h1:/lliqkxwWAhPjf5oSOIJup2XcqJaw8RGS6k3TGEc7GI=
+golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8 h1:yixxcjnhBmY0nkL253HFVIm0JsFHwrHdT3Yh6szTnfY=
+golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8/go.mod h1:jj3sYF3dwk5D+ghuXyeI3r5MFf+NT2An6/9dOA95KSI=
 golang.org/x/net v0.25.0 h1:d/OCCoBEUq33pjydKrGQhw7IlUPI2Oylr+8qLx49kac=
 golang.org/x/net v0.25.0/go.mod h1:JkAGAh7GEvH74S6FOH42FLoXpXbE/aqXSrIQjXgsiwM=
 golang.org/x/sync v0.7.0 h1:YsImfSBoP9QPYL0xyKJPq0gcaJdG3rInoqxTWbfQu9M=
