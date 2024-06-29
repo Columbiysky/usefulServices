@@ -1,5 +1,5 @@
 {
-  "host": "localhost",
+  "host": "host.docker.internal",
   "port": 5432,
   "username": "postgres",
   "password": "0o9i*U&Y",

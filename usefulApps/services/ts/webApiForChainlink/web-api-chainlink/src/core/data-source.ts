@@ -1,6 +1,6 @@
 import * as fs from "fs";
+import { Pair } from "src/enitities/pair";
 import { DataSource } from "typeorm";
-import { Pair } from "../enitities/pair";
 
 const dbConfig = JSON.parse(
   fs.readFileSync("./src/configs/dbConfig.json", "utf8"),
@@ -15,5 +15,4 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   entities: [Pair],
-  // schema: "finance"
 });
