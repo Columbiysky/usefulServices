@@ -5,8 +5,8 @@ go 1.22.4
 require (
 	github.com/gin-contrib/cors v1.7.2
 	github.com/gin-gonic/gin v1.10.0
-	github.com/samber/lo v1.46.0
 	github.com/go-co-op/gocron/v2 v2.11.0
+	github.com/samber/lo v1.46.0
 	github.com/spf13/viper v1.19.0
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.11
