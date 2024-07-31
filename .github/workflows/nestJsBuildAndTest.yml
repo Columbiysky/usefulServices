@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths: 
       - './nestJsBuildAndTest.yml'
-      - 'usefulApps/services/ts/webApiForChainlink/**'
+      - 'usefulApps/services/ts/**'
   pull_request:
     branches: ["main"]
     paths: 
       - './nestJsBuildAndTest.yml'
-      - 'usefulApps/services/ts/webApiForChainlink/**'
+      - 'usefulApps/services/ts/**'
 
 jobs:
   build:
@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: "22.x"
       - name: Install dependencies
-        working-directory: usefulApps/services/ts/webApiForChainlink/web-api-chainlink
+        working-directory: usefulApps/services/ts/web-api-chainlink
         run: npm i
       - name: Build
-        working-directory: usefulApps/services/ts/webApiForChainlink/web-api-chainlink
+        working-directory: usefulApps/services/ts/web-api-chainlink
         run: npm run build

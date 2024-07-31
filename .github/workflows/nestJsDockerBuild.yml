@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths: 
       - './nestJsDockerBuild.yml'
-      - 'usefulApps/services/ts/webApiForChainlink/**'
+      - 'usefulApps/services/ts/**'
   pull_request:
     branches: ["main"]
     paths: 
       - './nestJsDockerBuild.yml'
-      - 'usefulApps/services/ts/webApiForChainlink/**'
+      - 'usefulApps/services/ts/**'
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
       - name: Build frontend docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
-          file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
+          context: ./usefulApps/services/ts/web-api-chainlink
+          file: ./usefulApps/services/ts/web-api-chainlink/Dockerfile
           push: false
           tags: web-api-for-chainlink:latest
