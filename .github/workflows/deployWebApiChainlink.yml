@@ -24,8 +24,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink
-          file: ./usefulApps/services/ts/webApiForChainlink/web-api-chainlink/Dockerfile
+          context: ./usefulApps/services/ts/web-api-chainlink
+          file: ./usefulApps/services/ts/web-api-chainlink/Dockerfile
           platforms: linux/amd64
           push: true
           tags: | 
