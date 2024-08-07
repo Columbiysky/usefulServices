@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+    paths: 
+      - './deployWebApiChainlink.yml'
+      - 'usefulApps/services/ts/**'
 jobs:
   deployment:
     runs-on: ubuntu-latest
