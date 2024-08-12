@@ -20,7 +20,6 @@ usefulServices.code-workspace
 /usefulApps/tools/DbCreatorAndMigrator/obj
 /usefulApps/tools/DbCreatorAndMigrator/bin
 .idea
-package-lock.json
 
 # compiled output
 /dist
