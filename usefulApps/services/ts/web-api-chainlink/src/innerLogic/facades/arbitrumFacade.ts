@@ -4,6 +4,7 @@ import { AppDataSource } from "src/core/data-source";
 import { PairsEnum } from "src/core/pairsEnum";
 import { Pair } from "src/enitities/pair";
 import { Repository } from "typeorm";
+import ArbToUsdWrapper from "../wrappedContracts/arbMain/arbToUsdWrapper";
 import EzEthToEthArbMainWrapper from "../wrappedContracts/arbMain/ezEthToEthWrapper";
 import WstEthToEthArbMainWrapper from "../wrappedContracts/arbMain/wstEthToEthWrapper";
 import { BaseFacade } from "./baseFacade";
@@ -18,6 +19,8 @@ export class ArbitrumFacade extends BaseFacade {
 
     private wstEthToEthArbMainWrapperInstance: WstEthToEthArbMainWrapper;
     private ezEthToEthArbMainWrapperInstance: EzEthToEthArbMainWrapper;
+    private arbToUsdArbWrapperInstance: ArbToUsdWrapper;
+
     private get wstEthToEthArbMainWrapper() {
         if (!this.wstEthToEthArbMainWrapperInstance) {
             this.wstEthToEthArbMainWrapperInstance = new WstEthToEthArbMainWrapper(this.arbMainRpcLink.provider);
@@ -34,10 +37,19 @@ export class ArbitrumFacade extends BaseFacade {
         return this.ezEthToEthArbMainWrapperInstance;
     }
 
+    private get arbToUsdWrapper() {
+        if (!this.arbToUsdArbWrapperInstance) {
+            this.arbToUsdArbWrapperInstance = new ArbToUsdWrapper(this.arbMainRpcLink.provider);
+        }
+
+        return this.arbToUsdArbWrapperInstance;
+    }
+
     getDataFromContracts() {
         const pairRepository = AppDataSource.getRepository(Pair);
         this.getWstEthToEthPrice(pairRepository);
         this.getEzEthToEthPrice(pairRepository);
+        this.getArbToUsdPrice(pairRepository);
     }
 
     async getPairPrice(pairsEnum: PairsEnum): Promise<number> {
@@ -56,6 +68,14 @@ export class ArbitrumFacade extends BaseFacade {
             case PairsEnum.wstETHETH: {
                 const price = await pairRepository
                     .findOneBy({ Name: PairsEnum.wstETHETH })
+                    .then((existingPair) => {
+                        return (existingPair as Pair).Price;
+                    });
+                return price;
+            }
+            case PairsEnum.ARBUSD: {
+                const price = await pairRepository
+                    .findOneBy({ Name: PairsEnum.ARBUSD })
                     .then((existingPair) => {
                         return (existingPair as Pair).Price;
                     });
@@ -98,6 +118,17 @@ export class ArbitrumFacade extends BaseFacade {
         const pair = this.pairInstance(
             this.ezEthToEthArbMainWrapper.pairName,
             ezEthToEthPrice,
+        );
+        pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
+            this.savePair(pairRepository, existingPair, pair);
+        });
+    }
+
+    private async getArbToUsdPrice(pairRepository: Repository<Pair>) {
+        const arbToUsdPrice = await this.arbToUsdWrapper.get();
+        const pair = this.pairInstance(
+            this.arbToUsdWrapper.pairName,
+            arbToUsdPrice,
         );
         pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
