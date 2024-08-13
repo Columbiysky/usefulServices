@@ -5,9 +5,10 @@ import { Column, Entity, EntityOptions, PrimaryColumn } from "typeorm";
   schema: "finance",
 })
 export class Pair {
-  constructor(name: string, price: number, date?: string) {
+  constructor(name: string, price: number, chainName: string, date?: string) {
     this.Name = name;
     this.Price = price;
+    this.ChainName = chainName;
     this.LastTimeUpdate = date ?? new Date().toISOString();
   }
 
@@ -22,4 +23,7 @@ export class Pair {
 
   @Column("timestamp with time zone")
   LastTimeUpdate: string;
+
+  @Column("text")
+  ChainName: string;
 }

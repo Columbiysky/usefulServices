@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import * as fs from "fs";
+import { ChainsEnum } from "src/core/chainsEnum";
 import { AppDataSource } from "src/core/data-source";
 import { PairsEnum } from "src/core/pairsEnum";
 import { Pair } from "src/enitities/pair";
@@ -96,6 +97,8 @@ export class ArbitrumFacade extends BaseFacade {
             await repository.save(existingPair);
         } else if (existingPair !== null && existingPair.Price !== newPair.Price) {
             existingPair.Price = newPair.Price;
+            existingPair.ChainName ??= newPair.ChainName;
+            existingPair.LastTimeUpdate = newPair.LastTimeUpdate;
             await repository.save(existingPair);
         } else {
             await repository.save(newPair);
@@ -107,6 +110,7 @@ export class ArbitrumFacade extends BaseFacade {
         const pair = this.pairInstance(
             this.wstEthToEthArbMainWrapper.pairName,
             wstEthToEthPrice,
+            ChainsEnum.Arbitrum,
         );
         pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
@@ -118,6 +122,7 @@ export class ArbitrumFacade extends BaseFacade {
         const pair = this.pairInstance(
             this.ezEthToEthArbMainWrapper.pairName,
             ezEthToEthPrice,
+            ChainsEnum.Arbitrum,
         );
         pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
@@ -129,6 +134,7 @@ export class ArbitrumFacade extends BaseFacade {
         const pair = this.pairInstance(
             this.arbToUsdWrapper.pairName,
             arbToUsdPrice,
+            ChainsEnum.Arbitrum,
         );
         pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
