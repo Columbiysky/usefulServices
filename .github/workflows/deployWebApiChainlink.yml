@@ -11,9 +11,9 @@ on:
   workflow_run:
     workflows: ["Nest.js DOCKER build"]
     types: [completed]
-    
+
 jobs:
-  deployment:
+  on-success:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
