@@ -1,16 +1,6 @@
 name: Nest.js DOCKER build
 
 on:
-  push:
-    branches: ["main"]
-    paths: 
-      - './nestJsDockerBuild.yml'
-      - 'usefulApps/services/ts/**'
-  pull_request:
-    branches: ["main"]
-    paths: 
-      - './nestJsDockerBuild.yml'
-      - 'usefulApps/services/ts/**'
   workflow_run:
     workflows: ["Nest.js build and test"]
     types: [completed]

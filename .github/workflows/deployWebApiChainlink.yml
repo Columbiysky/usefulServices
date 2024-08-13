@@ -1,13 +1,6 @@
 name: Deployment web api chainlink
 
 on:
-  push:
-    branches:
-      - main
-    paths: 
-      - './deployWebApiChainlink.yml'
-      - 'usefulApps/services/ts/**'
-
   workflow_run:
     workflows: ["Nest.js DOCKER build"]
     types: [completed]
