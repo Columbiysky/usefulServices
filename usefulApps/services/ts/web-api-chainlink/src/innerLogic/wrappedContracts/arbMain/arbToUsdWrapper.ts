@@ -10,7 +10,7 @@ export default class ArbToUsdWrapper implements IBaseWrapper {
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6";
 
-    async get() {
+    async GetPrice() {
         const contract = new ethers.Contract(
             this.contractAddress,
             this.abi,

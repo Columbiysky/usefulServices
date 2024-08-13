@@ -11,7 +11,7 @@ export default class EzEthToEthWrapper implements IBaseWrapper {
     provider: ethers.JsonRpcProvider;
     contractAddress: string = "0x11E1836bFF2ce9d6A5bec9cA79dc998210f3886d";
 
-    async get() {
+    async GetPrice() {
         const contract = new ethers.Contract(
             this.contractAddress,
             this.abi,

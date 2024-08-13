@@ -55,37 +55,13 @@ export class ArbitrumFacade extends BaseFacade {
 
     async getPairPrice(pairsEnum: PairsEnum): Promise<number> {
         const pairRepository = AppDataSource.getRepository(Pair);
+        const price = await pairRepository
+            .findOneBy({ Name: pairsEnum, ChainName: ChainsEnum.Arbitrum })
+            .then((existingPair) => {
+                return (existingPair as Pair).Price;
+            });
 
-        switch (pairsEnum) {
-            case PairsEnum.ezETHETH: {
-                const price = await pairRepository
-                    .findOneBy({ Name: PairsEnum.ezETHETH })
-                    .then((existingPair) => {
-                        return (existingPair as Pair).Price;
-                    });
-
-                return price;
-            }
-            case PairsEnum.wstETHETH: {
-                const price = await pairRepository
-                    .findOneBy({ Name: PairsEnum.wstETHETH })
-                    .then((existingPair) => {
-                        return (existingPair as Pair).Price;
-                    });
-                return price;
-            }
-            case PairsEnum.ARBUSD: {
-                const price = await pairRepository
-                    .findOneBy({ Name: PairsEnum.ARBUSD })
-                    .then((existingPair) => {
-                        return (existingPair as Pair).Price;
-                    });
-                return price;
-            }
-            default: {
-                return undefined;
-            }
-        }
+        return price;
     }
 
     private async savePair(
@@ -106,37 +82,37 @@ export class ArbitrumFacade extends BaseFacade {
     }
 
     private async getWstEthToEthPrice(pairRepository: Repository<Pair>) {
-        const wstEthToEthPrice = await this.wstEthToEthArbMainWrapper.get();
+        const wstEthToEthPrice = await this.wstEthToEthArbMainWrapper.GetPrice();
         const pair = this.pairInstance(
             this.wstEthToEthArbMainWrapper.pairName,
             wstEthToEthPrice,
             ChainsEnum.Arbitrum,
         );
-        pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
+        pairRepository.findOneBy({ Name: pair.Name, ChainName: ChainsEnum.Arbitrum }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
         });
     }
 
     private async getEzEthToEthPrice(pairRepository: Repository<Pair>) {
-        const ezEthToEthPrice = await this.ezEthToEthArbMainWrapper.get();
+        const ezEthToEthPrice = await this.ezEthToEthArbMainWrapper.GetPrice();
         const pair = this.pairInstance(
             this.ezEthToEthArbMainWrapper.pairName,
             ezEthToEthPrice,
             ChainsEnum.Arbitrum,
         );
-        pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
+        pairRepository.findOneBy({ Name: pair.Name, ChainName: ChainsEnum.Arbitrum }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
         });
     }
 
     private async getArbToUsdPrice(pairRepository: Repository<Pair>) {
-        const arbToUsdPrice = await this.arbToUsdWrapper.get();
+        const arbToUsdPrice = await this.arbToUsdWrapper.GetPrice();
         const pair = this.pairInstance(
             this.arbToUsdWrapper.pairName,
             arbToUsdPrice,
             ChainsEnum.Arbitrum,
         );
-        pairRepository.findOneBy({ Name: pair.Name }).then((existingPair) => {
+        pairRepository.findOneBy({ Name: pair.Name, ChainName: ChainsEnum.Arbitrum }).then((existingPair) => {
             this.savePair(pairRepository, existingPair, pair);
         });
     }
