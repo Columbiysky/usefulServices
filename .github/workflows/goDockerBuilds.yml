@@ -1,18 +1,9 @@
 name: Go DOCKER build
 
 on:
-  push:
-    branches: ["main"]
-    paths: 
-      - './goDockerBuilds.yml'
-      - 'usefulApps/backend/**'
-      - 'usefulApps/sso/**'
-  pull_request:
-    branches: ["main"]
-    paths: 
-      - './goDockerBuilds.yml'
-      - 'usefulApps/backend/**'
-      - 'usefulApps/sso/**'
+  workflow_run:
+    workflows: ["Go builds and tests"]
+    types: [completed]
 
 jobs:
   build-backend-docker-image:
