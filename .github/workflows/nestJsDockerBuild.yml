@@ -13,8 +13,7 @@ on:
       - 'usefulApps/services/ts/**'
   workflow_run:
     workflows: ["Nest.js build and test"]
-    types:
-      - completed
+    types: [completed]
 
 jobs:
   build:

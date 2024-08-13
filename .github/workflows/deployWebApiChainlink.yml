@@ -10,8 +10,8 @@ on:
 
   workflow_run:
     workflows: ["Nest.js DOCKER build"]
-    types:
-      - completed
+    types: [completed]
+    
 jobs:
   deployment:
     runs-on: ubuntu-latest
