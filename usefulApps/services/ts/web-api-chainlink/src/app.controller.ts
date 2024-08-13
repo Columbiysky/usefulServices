@@ -3,11 +3,11 @@ import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) { }
 
-  @Get(":pairName")
-  async getPairData(@Query() req) {
-    const res = await this.appService.getPairData(req.pairName);
-    return res;
-  }
+    @Get("/getPairData")
+    async getPairData(@Query('chain') chainName: string, @Query('pairName') pairName: string) {
+        const res = await this.appService.getPairData(chainName, pairName);
+        return res ?? null;
+    }
 }

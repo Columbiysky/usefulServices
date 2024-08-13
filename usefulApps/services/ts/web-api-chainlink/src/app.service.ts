@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { CronJob } from 'cron';
+import { ChainsEnum } from './core/chainsEnum';
 import { PairsEnum } from "./core/pairsEnum";
 import { PairDataLogic } from "./innerLogic/pairDataLogic";
 
@@ -13,8 +14,8 @@ export class AppService {
         that.pairDataLogic
           .getDataFromContracts()
           .then(() => {
-            console.log("Smart contracts data has been updated from cron"); 
-            console.log(new Date().toISOString()); 
+            console.log("Smart contracts data has been updated from cron");
+            console.log(new Date().toISOString());
           });
       }, // onTick
       null, // onComplete
@@ -23,16 +24,16 @@ export class AppService {
     );
 
     job.start();
-    
+
     this.pairDataLogic
       .getDataFromContracts()
       .then(() => console.log("Smart contracts data has been updated from start"));
   }
 
-  async getPairData(pairName: string): Promise<number> {
-    if (pairName in PairsEnum) {
+  async getPairData(chainName: string, pairName: string): Promise<number> {
+    if (chainName in ChainsEnum && pairName in PairsEnum) {
       const price = await this.pairDataLogic
-        .getPairPrice(PairsEnum[pairName])
+        .getPairPrice(ChainsEnum[chainName], PairsEnum[pairName])
         .then((res) => {
           return res;
         });
