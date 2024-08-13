@@ -6,5 +6,6 @@ namespace DbCreatorAndMigrator.Models.Finance
         public required string Name { get; set; }
         public double Price { get; set; }
         public DateTimeOffset? LastTimeUpdate { get; set; }
+        public string? ChainName { get; set; }
     }
 }
