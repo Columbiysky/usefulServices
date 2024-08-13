@@ -5,8 +5,8 @@ import { PairsEnum } from "src/core/pairsEnum";
 import { Pair } from "src/enitities/pair";
 import { Repository } from "typeorm";
 import ArbToUsdWrapper from "../wrappedContracts/arbMain/arbToUsdWrapper";
-import EzEthToEthArbMainWrapper from "../wrappedContracts/arbMain/ezEthToEthWrapper";
-import WstEthToEthArbMainWrapper from "../wrappedContracts/arbMain/wstEthToEthWrapper";
+import EzEthToEthWrapper from "../wrappedContracts/arbMain/ezEthToEthWrapper";
+import WstEthToEthWrapper from "../wrappedContracts/arbMain/wstEthToEthWrapper";
 import { BaseFacade } from "./baseFacade";
 
 @Injectable()
@@ -17,13 +17,13 @@ export class ArbitrumFacade extends BaseFacade {
         );
     }
 
-    private wstEthToEthArbMainWrapperInstance: WstEthToEthArbMainWrapper;
-    private ezEthToEthArbMainWrapperInstance: EzEthToEthArbMainWrapper;
+    private wstEthToEthArbMainWrapperInstance: WstEthToEthWrapper;
+    private ezEthToEthArbMainWrapperInstance: EzEthToEthWrapper;
     private arbToUsdArbWrapperInstance: ArbToUsdWrapper;
 
     private get wstEthToEthArbMainWrapper() {
         if (!this.wstEthToEthArbMainWrapperInstance) {
-            this.wstEthToEthArbMainWrapperInstance = new WstEthToEthArbMainWrapper(this.arbMainRpcLink.provider);
+            this.wstEthToEthArbMainWrapperInstance = new WstEthToEthWrapper(this.arbMainRpcLink.provider);
         }
 
         return this.wstEthToEthArbMainWrapperInstance;
@@ -31,7 +31,7 @@ export class ArbitrumFacade extends BaseFacade {
 
     private get ezEthToEthArbMainWrapper() {
         if (!this.ezEthToEthArbMainWrapperInstance) {
-            this.ezEthToEthArbMainWrapperInstance = new EzEthToEthArbMainWrapper(this.arbMainRpcLink.provider);
+            this.ezEthToEthArbMainWrapperInstance = new EzEthToEthWrapper(this.arbMainRpcLink.provider);
         }
 
         return this.ezEthToEthArbMainWrapperInstance;
