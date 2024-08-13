@@ -7,6 +7,11 @@ on:
     paths: 
       - './deployWebApiChainlink.yml'
       - 'usefulApps/services/ts/**'
+
+  workflow_run:
+    workflows: ["Nest.js DOCKER build"]
+    types:
+      - completed
 jobs:
   deployment:
     runs-on: ubuntu-latest
