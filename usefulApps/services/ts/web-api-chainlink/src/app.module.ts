@@ -5,8 +5,8 @@ import { GeneralFacade } from './innerLogic/generalFacade';
 import { PairDataLogic } from "./innerLogic/pairDataLogic";
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService, PairDataLogic, GeneralFacade],
+    imports: [],
+    controllers: [AppController],
+    providers: [AppService, PairDataLogic, GeneralFacade],
 })
 export class AppModule { }
