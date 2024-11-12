@@ -29,4 +29,4 @@ jobs:
         working-directory: usefulApps/tools/DbCreatorAndMigrator
         run: |
           dotnet publish -r linux-x64 --self-contained
-          ./bin/Release/net8.0/linux-x64/publish/DbCreatorAndMigrator
+          ./bin/Release/net9.0/linux-x64/publish/DbCreatorAndMigrator
