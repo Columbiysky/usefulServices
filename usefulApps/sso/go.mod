@@ -8,7 +8,7 @@ require (
 	github.com/go-co-op/gocron/v2 v2.12.4
 	github.com/samber/lo v1.47.0
 	github.com/spf13/viper v1.19.0
-	gorm.io/driver/postgres v1.5.10
+	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
 
